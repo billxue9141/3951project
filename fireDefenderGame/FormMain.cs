@@ -110,20 +110,24 @@ namespace fireDefenderGame
 
         private void mapPanel_paint(object sender, PaintEventArgs e)
         {
-            var p = sender as Panel;
-            
+            var p = sender as Panel;            
             G = e.Graphics;
 
             G.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
 
             int length = p.Height / ROW;
+
             for (int i = 0; i < COL; i++)
             {
                 for (int j = 0; j < ROW; j++)
                 {
                     r = new Rectangle(i * length, j * length, length, length);
-
-                    G.FillRectangle(Brushes.Green, r);
+                    //if the tile is on fire, fill tile with a different color - replace with an image later
+                    if (gameBoard.board[i, j].hasFire)
+                        G.FillRectangle(Brushes.Red, r);
+                    else
+                        G.FillRectangle(Brushes.Green, r);
+                    
                     G.DrawRectangle(Pens.Black, r);
                 }
             }
