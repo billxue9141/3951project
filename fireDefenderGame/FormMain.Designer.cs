@@ -32,14 +32,19 @@
             this.labelTicksPerSec = new System.Windows.Forms.Label();
             this.labelTickPerSec = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
+            this.labelTotalTicks = new System.Windows.Forms.Label();
+            this.labelTotalTicksDisplay = new System.Windows.Forms.Label();
             this.labelMouseY = new System.Windows.Forms.Label();
             this.labelMouseYDisplay = new System.Windows.Forms.Label();
             this.labelMouseX = new System.Windows.Forms.Label();
             this.labelmouseXDisplay = new System.Windows.Forms.Label();
             this.panelUpgrade = new System.Windows.Forms.Panel();
-            this.labelTotalTicks = new System.Windows.Forms.Label();
-            this.labelTotalTicksDisplay = new System.Windows.Forms.Label();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonNewGame = new System.Windows.Forms.Button();
+            this.buttonPause = new System.Windows.Forms.Button();
+            this.buttonHelp = new System.Windows.Forms.Button();
             this.panelInfo.SuspendLayout();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPanel
@@ -79,10 +84,29 @@
             this.panelInfo.Controls.Add(this.labelmouseXDisplay);
             this.panelInfo.Controls.Add(this.labelTickPerSec);
             this.panelInfo.Controls.Add(this.labelTicksPerSec);
-            this.panelInfo.Location = new System.Drawing.Point(842, 21);
+            this.panelInfo.Location = new System.Drawing.Point(820, 76);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(304, 332);
+            this.panelInfo.Size = new System.Drawing.Size(326, 254);
             this.panelInfo.TabIndex = 4;
+            // 
+            // labelTotalTicks
+            // 
+            this.labelTotalTicks.AutoSize = true;
+            this.labelTotalTicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalTicks.Location = new System.Drawing.Point(17, 50);
+            this.labelTotalTicks.Name = "labelTotalTicks";
+            this.labelTotalTicks.Size = new System.Drawing.Size(100, 20);
+            this.labelTotalTicks.TabIndex = 9;
+            this.labelTotalTicks.Text = "Total Ticks:";
+            // 
+            // labelTotalTicksDisplay
+            // 
+            this.labelTotalTicksDisplay.AutoSize = true;
+            this.labelTotalTicksDisplay.Location = new System.Drawing.Point(158, 50);
+            this.labelTotalTicksDisplay.Name = "labelTotalTicksDisplay";
+            this.labelTotalTicksDisplay.Size = new System.Drawing.Size(76, 20);
+            this.labelTotalTicksDisplay.TabIndex = 8;
+            this.labelTotalTicksDisplay.Text = "total ticks";
             // 
             // labelMouseY
             // 
@@ -124,35 +148,54 @@
             // 
             // panelUpgrade
             // 
-            this.panelUpgrade.Location = new System.Drawing.Point(842, 375);
+            this.panelUpgrade.Location = new System.Drawing.Point(820, 336);
             this.panelUpgrade.Name = "panelUpgrade";
-            this.panelUpgrade.Size = new System.Drawing.Size(304, 427);
+            this.panelUpgrade.Size = new System.Drawing.Size(326, 427);
             this.panelUpgrade.TabIndex = 5;
             // 
-            // labelTotalTicks
+            // panelMenu
             // 
-            this.labelTotalTicks.AutoSize = true;
-            this.labelTotalTicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalTicks.Location = new System.Drawing.Point(17, 50);
-            this.labelTotalTicks.Name = "labelTotalTicks";
-            this.labelTotalTicks.Size = new System.Drawing.Size(100, 20);
-            this.labelTotalTicks.TabIndex = 9;
-            this.labelTotalTicks.Text = "Total Ticks:";
+            this.panelMenu.Controls.Add(this.buttonHelp);
+            this.panelMenu.Controls.Add(this.buttonPause);
+            this.panelMenu.Controls.Add(this.buttonNewGame);
+            this.panelMenu.Location = new System.Drawing.Point(820, 21);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(326, 49);
+            this.panelMenu.TabIndex = 6;
             // 
-            // labelTotalTicksDisplay
+            // buttonNewGame
             // 
-            this.labelTotalTicksDisplay.AutoSize = true;
-            this.labelTotalTicksDisplay.Location = new System.Drawing.Point(158, 50);
-            this.labelTotalTicksDisplay.Name = "labelTotalTicksDisplay";
-            this.labelTotalTicksDisplay.Size = new System.Drawing.Size(76, 20);
-            this.labelTotalTicksDisplay.TabIndex = 8;
-            this.labelTotalTicksDisplay.Text = "total ticks";
+            this.buttonNewGame.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewGame.Name = "buttonNewGame";
+            this.buttonNewGame.Size = new System.Drawing.Size(116, 40);
+            this.buttonNewGame.TabIndex = 0;
+            this.buttonNewGame.Text = "New Game";
+            this.buttonNewGame.UseVisualStyleBackColor = true;
+            // 
+            // buttonPause
+            // 
+            this.buttonPause.Location = new System.Drawing.Point(125, 3);
+            this.buttonPause.Name = "buttonPause";
+            this.buttonPause.Size = new System.Drawing.Size(96, 40);
+            this.buttonPause.TabIndex = 1;
+            this.buttonPause.Text = "Pause";
+            this.buttonPause.UseVisualStyleBackColor = true;
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Location = new System.Drawing.Point(227, 3);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(96, 40);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 814);
+            this.ClientSize = new System.Drawing.Size(1264, 827);
+            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelUpgrade);
             this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.mapPanel);
@@ -161,6 +204,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -178,6 +222,10 @@
         private System.Windows.Forms.Label labelmouseXDisplay;
         private System.Windows.Forms.Label labelTotalTicks;
         private System.Windows.Forms.Label labelTotalTicksDisplay;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.Button buttonPause;
+        private System.Windows.Forms.Button buttonNewGame;
     }
 }
 
