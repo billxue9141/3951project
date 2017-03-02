@@ -40,10 +40,15 @@
             this.labelmouseXDisplay = new System.Windows.Forms.Label();
             this.panelUpgrade = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.buttonNewGame = new System.Windows.Forms.Button();
-            this.buttonPause = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
+            this.buttonPause = new System.Windows.Forms.Button();
+            this.buttonNewGame = new System.Windows.Forms.Button();
+            this.buttonMove = new System.Windows.Forms.Button();
+            this.buttonAttack = new System.Windows.Forms.Button();
+            this.richTextBoxDescriptions = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelInfo.SuspendLayout();
+            this.panelUpgrade.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +117,7 @@
             // 
             this.labelMouseY.AutoSize = true;
             this.labelMouseY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMouseY.Location = new System.Drawing.Point(17, 138);
+            this.labelMouseY.Location = new System.Drawing.Point(17, 131);
             this.labelMouseY.Name = "labelMouseY";
             this.labelMouseY.Size = new System.Drawing.Size(84, 20);
             this.labelMouseY.TabIndex = 7;
@@ -121,7 +126,7 @@
             // labelMouseYDisplay
             // 
             this.labelMouseYDisplay.AutoSize = true;
-            this.labelMouseYDisplay.Location = new System.Drawing.Point(115, 138);
+            this.labelMouseYDisplay.Location = new System.Drawing.Point(115, 131);
             this.labelMouseYDisplay.Name = "labelMouseYDisplay";
             this.labelMouseYDisplay.Size = new System.Drawing.Size(68, 20);
             this.labelMouseYDisplay.TabIndex = 6;
@@ -131,7 +136,7 @@
             // 
             this.labelMouseX.AutoSize = true;
             this.labelMouseX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMouseX.Location = new System.Drawing.Point(17, 101);
+            this.labelMouseX.Location = new System.Drawing.Point(17, 94);
             this.labelMouseX.Name = "labelMouseX";
             this.labelMouseX.Size = new System.Drawing.Size(84, 20);
             this.labelMouseX.TabIndex = 5;
@@ -140,7 +145,7 @@
             // labelmouseXDisplay
             // 
             this.labelmouseXDisplay.AutoSize = true;
-            this.labelmouseXDisplay.Location = new System.Drawing.Point(115, 101);
+            this.labelmouseXDisplay.Location = new System.Drawing.Point(115, 94);
             this.labelmouseXDisplay.Name = "labelmouseXDisplay";
             this.labelmouseXDisplay.Size = new System.Drawing.Size(68, 20);
             this.labelmouseXDisplay.TabIndex = 4;
@@ -148,9 +153,13 @@
             // 
             // panelUpgrade
             // 
+            this.panelUpgrade.Controls.Add(this.richTextBox1);
+            this.panelUpgrade.Controls.Add(this.richTextBoxDescriptions);
+            this.panelUpgrade.Controls.Add(this.buttonAttack);
+            this.panelUpgrade.Controls.Add(this.buttonMove);
             this.panelUpgrade.Location = new System.Drawing.Point(820, 336);
             this.panelUpgrade.Name = "panelUpgrade";
-            this.panelUpgrade.Size = new System.Drawing.Size(326, 427);
+            this.panelUpgrade.Size = new System.Drawing.Size(326, 466);
             this.panelUpgrade.TabIndex = 5;
             // 
             // panelMenu
@@ -163,14 +172,14 @@
             this.panelMenu.Size = new System.Drawing.Size(326, 49);
             this.panelMenu.TabIndex = 6;
             // 
-            // buttonNewGame
+            // buttonHelp
             // 
-            this.buttonNewGame.Location = new System.Drawing.Point(3, 3);
-            this.buttonNewGame.Name = "buttonNewGame";
-            this.buttonNewGame.Size = new System.Drawing.Size(116, 40);
-            this.buttonNewGame.TabIndex = 0;
-            this.buttonNewGame.Text = "New Game";
-            this.buttonNewGame.UseVisualStyleBackColor = true;
+            this.buttonHelp.Location = new System.Drawing.Point(227, 3);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(96, 40);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "Help";
+            this.buttonHelp.UseVisualStyleBackColor = true;
             // 
             // buttonPause
             // 
@@ -181,20 +190,54 @@
             this.buttonPause.Text = "Pause";
             this.buttonPause.UseVisualStyleBackColor = true;
             // 
-            // buttonHelp
+            // buttonNewGame
             // 
-            this.buttonHelp.Location = new System.Drawing.Point(227, 3);
-            this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(96, 40);
-            this.buttonHelp.TabIndex = 1;
-            this.buttonHelp.Text = "Help";
-            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonNewGame.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewGame.Name = "buttonNewGame";
+            this.buttonNewGame.Size = new System.Drawing.Size(116, 40);
+            this.buttonNewGame.TabIndex = 0;
+            this.buttonNewGame.Text = "New Game";
+            this.buttonNewGame.UseVisualStyleBackColor = true;
+            // 
+            // buttonMove
+            // 
+            this.buttonMove.Location = new System.Drawing.Point(20, 28);
+            this.buttonMove.Name = "buttonMove";
+            this.buttonMove.Size = new System.Drawing.Size(116, 40);
+            this.buttonMove.TabIndex = 1;
+            this.buttonMove.Text = "Move";
+            this.buttonMove.UseVisualStyleBackColor = true;
+            // 
+            // buttonAttack
+            // 
+            this.buttonAttack.Location = new System.Drawing.Point(174, 28);
+            this.buttonAttack.Name = "buttonAttack";
+            this.buttonAttack.Size = new System.Drawing.Size(116, 40);
+            this.buttonAttack.TabIndex = 2;
+            this.buttonAttack.Text = "Attack";
+            this.buttonAttack.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxDescriptions
+            // 
+            this.richTextBoxDescriptions.Location = new System.Drawing.Point(21, 234);
+            this.richTextBoxDescriptions.Name = "richTextBoxDescriptions";
+            this.richTextBoxDescriptions.Size = new System.Drawing.Size(269, 202);
+            this.richTextBoxDescriptions.TabIndex = 4;
+            this.richTextBoxDescriptions.Text = "Description";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(21, 86);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(269, 128);
+            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Text = "Select unit/building";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 827);
+            this.ClientSize = new System.Drawing.Size(1186, 842);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelUpgrade);
             this.Controls.Add(this.panelInfo);
@@ -204,6 +247,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
+            this.panelUpgrade.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -226,6 +270,10 @@
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Button buttonPause;
         private System.Windows.Forms.Button buttonNewGame;
+        private System.Windows.Forms.RichTextBox richTextBoxDescriptions;
+        private System.Windows.Forms.Button buttonAttack;
+        private System.Windows.Forms.Button buttonMove;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

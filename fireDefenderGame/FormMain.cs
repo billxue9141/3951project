@@ -45,7 +45,8 @@ namespace fireDefenderGame
             InitializeComponent();
             length = (mapPanel.Height) / ROW;
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
-        }
+            this.MinimumSize = new Size(800, 600);
+         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
