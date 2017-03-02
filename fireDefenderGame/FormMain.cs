@@ -39,6 +39,8 @@ namespace fireDefenderGame
         //game running?
         bool isRunning = true;
 
+        GameBoard gameBoard;
+
 
         public FormMain()
         {
@@ -46,6 +48,7 @@ namespace fireDefenderGame
             length = (mapPanel.Height) / ROW;
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
             this.MinimumSize = new Size(800, 600);
+            gameBoard = new GameBoard(ROW, COL);
          }
 
         private void Form1_Load(object sender, EventArgs e)
