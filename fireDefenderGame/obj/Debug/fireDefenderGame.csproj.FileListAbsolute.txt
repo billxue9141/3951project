@@ -7,3 +7,6 @@ c:\users\bill xue\documents\visual studio 2015\Projects\fireDefenderGame\fireDef
 c:\users\bill xue\documents\visual studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.exe
 c:\users\bill xue\documents\visual studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.pdb
 c:\users\bill xue\documents\visual studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.FormMain.resources
+C:\Users\Sean\Desktop\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.exe.config
+C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.exe
+C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.pdb
