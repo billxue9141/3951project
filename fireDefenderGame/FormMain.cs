@@ -22,6 +22,9 @@ namespace fireDefenderGame
         /// </summary>
         static int COL = 20;
 
+        static int MAX_TICK_PER_SEC = 50;
+        static int MIN_TICK_PER_SEC = 2;
+
         /// <summary>
         /// length of each rectangle
         /// </summary>
@@ -35,6 +38,7 @@ namespace fireDefenderGame
         int tSec = DateTime.Now.Second;
         int tTicks = 0;
         int totalTicks = 0;
+        int tickPerSec;
 
         //game running?
         bool isRunning = true;
@@ -49,6 +53,7 @@ namespace fireDefenderGame
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
             this.MinimumSize = new Size(800, 600);
             gameBoard = new GameBoard(ROW, COL);
+            tickPerSec = 10;
          }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -97,7 +102,7 @@ namespace fireDefenderGame
                 tTicks = tTicks + 1;
                 totalTicks ++;
                 labelTotalTicksDisplay.Text = totalTicks.ToString();                
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(1000/tickPerSec);
             }
             else
             {
@@ -133,5 +138,16 @@ namespace fireDefenderGame
             }
         }
 
+        private void buttonSpeedUp_Click(object sender, EventArgs e)
+        {
+            if(tickPerSec < MAX_TICK_PER_SEC)
+                tickPerSec++;
+        }
+
+        private void buttonSlowDown_Click(object sender, EventArgs e)
+        {
+            if (tickPerSec > MIN_TICK_PER_SEC)
+                tickPerSec--;
+        }
     }
 }
