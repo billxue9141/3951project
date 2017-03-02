@@ -10,12 +10,12 @@ namespace fireDefenderGame
     {
         private Tile[ , ] board;
         private int row;
-        private int column;
+        private int col;
 
         public GameBoard(int row, int col)
         {
             this.row = row;
-            this.column = col;
+            this.col = col;
             board = new Tile[row,col];
 
         }
