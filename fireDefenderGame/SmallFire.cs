@@ -14,7 +14,6 @@ namespace fireDefenderGame
         static int MY_SPREAD_CHANCE = 0;
         static int MIN_DAMAGE = 1;
         static int MAX_DAMAGE = 5;
-        static ConsoleColor COLOR = ConsoleColor.Red;
 
         public SmallFire(int row, int col)
         {

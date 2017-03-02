@@ -128,7 +128,7 @@ namespace fireDefenderGame
                 {
                     r = new Rectangle(i * length, j * length, length, length);
                     //if the tile is on fire, fill tile with a different color - replace with an image later
-                    if (gameBoard.board[i, j].hasFire)
+                    if (gameBoard.board[i, j].fire != null)
                         G.FillRectangle(Brushes.Red, r);
                     else
                         G.FillRectangle(Brushes.Green, r);
