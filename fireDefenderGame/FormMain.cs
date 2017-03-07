@@ -22,8 +22,20 @@ namespace fireDefenderGame
         /// </summary>
         static int COL = 20;
 
+        /// <summary>
+        /// maximum allowed ticks per sec
+        /// </summary>
         static int MAX_TICK_PER_SEC = 50;
+
+        /// <summary>
+        /// minimum allowed ticks per sec
+        /// </summary>
         static int MIN_TICK_PER_SEC = 2;
+
+        /// <summary>
+        /// initial ticks per sec
+        /// </summary>
+        static int INITIAL_TICK_PER_SEC = 10;
 
         /// <summary>
         /// length of each rectangle
@@ -35,10 +47,10 @@ namespace fireDefenderGame
         Rectangle r;
 
         //fps counter
-        int tSec = DateTime.Now.Second;
-        int tTicks = 0;
+        int currentSecond = DateTime.Now.Second;
+        int ticksPerSec = 0;
         int totalTicks = 0;
-        int tickPerSec;
+        int initialTicksPerSec;
 
         //game running?
         bool isRunning = true;
@@ -53,7 +65,7 @@ namespace fireDefenderGame
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
             this.MinimumSize = new Size(800, 600);
             gameBoard = new GameBoard(ROW, COL);
-            tickPerSec = 10;
+            initialTicksPerSec = INITIAL_TICK_PER_SEC;
          }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -97,18 +109,18 @@ namespace fireDefenderGame
 
         private void TickCounter()
         {
-            if (tSec == DateTime.Now.Second && isRunning)
+            if (currentSecond == DateTime.Now.Second && isRunning)
             {
-                tTicks = tTicks + 1;
+                ticksPerSec = ticksPerSec + 1;
                 totalTicks ++;
                 labelTotalTicksDisplay.Text = totalTicks.ToString();                
-                System.Threading.Thread.Sleep(1000/tickPerSec);
+                System.Threading.Thread.Sleep(1000/initialTicksPerSec);
             }
             else
             {
-                labelTicksPerSec.Text = tTicks.ToString();
-                tTicks = 0;
-                tSec = DateTime.Now.Second;
+                labelTicksPerSec.Text = ticksPerSec.ToString();
+                ticksPerSec = 0;
+                currentSecond = DateTime.Now.Second;
             }
 
         }
@@ -140,14 +152,14 @@ namespace fireDefenderGame
 
         private void buttonSpeedUp_Click(object sender, EventArgs e)
         {
-            if(tickPerSec < MAX_TICK_PER_SEC)
-                tickPerSec++;
+            if(initialTicksPerSec < MAX_TICK_PER_SEC)
+                initialTicksPerSec++;
         }
 
         private void buttonSlowDown_Click(object sender, EventArgs e)
         {
-            if (tickPerSec > MIN_TICK_PER_SEC)
-                tickPerSec--;
+            if (initialTicksPerSec > MIN_TICK_PER_SEC)
+                initialTicksPerSec--;
         }
     }
 }
