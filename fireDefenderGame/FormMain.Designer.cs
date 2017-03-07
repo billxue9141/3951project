@@ -39,14 +39,16 @@
             this.labelMouseX = new System.Windows.Forms.Label();
             this.labelmouseXDisplay = new System.Windows.Forms.Label();
             this.panelUpgrade = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDescriptions = new System.Windows.Forms.RichTextBox();
+            this.buttonAttack = new System.Windows.Forms.Button();
+            this.buttonMove = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonSlowDown = new System.Windows.Forms.Button();
+            this.buttonSpeedUp = new System.Windows.Forms.Button();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
-            this.buttonMove = new System.Windows.Forms.Button();
-            this.buttonAttack = new System.Windows.Forms.Button();
-            this.richTextBoxDescriptions = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelInfo.SuspendLayout();
             this.panelUpgrade.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -89,9 +91,9 @@
             this.panelInfo.Controls.Add(this.labelmouseXDisplay);
             this.panelInfo.Controls.Add(this.labelTickPerSec);
             this.panelInfo.Controls.Add(this.labelTicksPerSec);
-            this.panelInfo.Location = new System.Drawing.Point(820, 76);
+            this.panelInfo.Location = new System.Drawing.Point(820, 133);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(326, 254);
+            this.panelInfo.Size = new System.Drawing.Size(326, 197);
             this.panelInfo.TabIndex = 4;
             // 
             // labelTotalTicks
@@ -162,15 +164,71 @@
             this.panelUpgrade.Size = new System.Drawing.Size(326, 466);
             this.panelUpgrade.TabIndex = 5;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(21, 86);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(269, 128);
+            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Text = "Select unit/building";
+            // 
+            // richTextBoxDescriptions
+            // 
+            this.richTextBoxDescriptions.Location = new System.Drawing.Point(21, 234);
+            this.richTextBoxDescriptions.Name = "richTextBoxDescriptions";
+            this.richTextBoxDescriptions.Size = new System.Drawing.Size(269, 202);
+            this.richTextBoxDescriptions.TabIndex = 4;
+            this.richTextBoxDescriptions.Text = "Description";
+            // 
+            // buttonAttack
+            // 
+            this.buttonAttack.Location = new System.Drawing.Point(174, 28);
+            this.buttonAttack.Name = "buttonAttack";
+            this.buttonAttack.Size = new System.Drawing.Size(116, 40);
+            this.buttonAttack.TabIndex = 2;
+            this.buttonAttack.Text = "Attack";
+            this.buttonAttack.UseVisualStyleBackColor = true;
+            // 
+            // buttonMove
+            // 
+            this.buttonMove.Location = new System.Drawing.Point(20, 28);
+            this.buttonMove.Name = "buttonMove";
+            this.buttonMove.Size = new System.Drawing.Size(116, 40);
+            this.buttonMove.TabIndex = 1;
+            this.buttonMove.Text = "Move";
+            this.buttonMove.UseVisualStyleBackColor = true;
+            // 
             // panelMenu
             // 
+            this.panelMenu.Controls.Add(this.buttonSlowDown);
+            this.panelMenu.Controls.Add(this.buttonSpeedUp);
             this.panelMenu.Controls.Add(this.buttonHelp);
             this.panelMenu.Controls.Add(this.buttonPause);
             this.panelMenu.Controls.Add(this.buttonNewGame);
             this.panelMenu.Location = new System.Drawing.Point(820, 21);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(326, 49);
+            this.panelMenu.Size = new System.Drawing.Size(326, 106);
             this.panelMenu.TabIndex = 6;
+            // 
+            // buttonSlowDown
+            // 
+            this.buttonSlowDown.Location = new System.Drawing.Point(162, 49);
+            this.buttonSlowDown.Name = "buttonSlowDown";
+            this.buttonSlowDown.Size = new System.Drawing.Size(116, 40);
+            this.buttonSlowDown.TabIndex = 3;
+            this.buttonSlowDown.Text = "Slow Down";
+            this.buttonSlowDown.UseVisualStyleBackColor = true;
+            this.buttonSlowDown.Click += new System.EventHandler(this.buttonSlowDown_Click);
+            // 
+            // buttonSpeedUp
+            // 
+            this.buttonSpeedUp.Location = new System.Drawing.Point(21, 49);
+            this.buttonSpeedUp.Name = "buttonSpeedUp";
+            this.buttonSpeedUp.Size = new System.Drawing.Size(116, 40);
+            this.buttonSpeedUp.TabIndex = 2;
+            this.buttonSpeedUp.Text = "Speed Up";
+            this.buttonSpeedUp.UseVisualStyleBackColor = true;
+            this.buttonSpeedUp.Click += new System.EventHandler(this.buttonSpeedUp_Click);
             // 
             // buttonHelp
             // 
@@ -198,40 +256,6 @@
             this.buttonNewGame.TabIndex = 0;
             this.buttonNewGame.Text = "New Game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
-            // 
-            // buttonMove
-            // 
-            this.buttonMove.Location = new System.Drawing.Point(20, 28);
-            this.buttonMove.Name = "buttonMove";
-            this.buttonMove.Size = new System.Drawing.Size(116, 40);
-            this.buttonMove.TabIndex = 1;
-            this.buttonMove.Text = "Move";
-            this.buttonMove.UseVisualStyleBackColor = true;
-            // 
-            // buttonAttack
-            // 
-            this.buttonAttack.Location = new System.Drawing.Point(174, 28);
-            this.buttonAttack.Name = "buttonAttack";
-            this.buttonAttack.Size = new System.Drawing.Size(116, 40);
-            this.buttonAttack.TabIndex = 2;
-            this.buttonAttack.Text = "Attack";
-            this.buttonAttack.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxDescriptions
-            // 
-            this.richTextBoxDescriptions.Location = new System.Drawing.Point(21, 234);
-            this.richTextBoxDescriptions.Name = "richTextBoxDescriptions";
-            this.richTextBoxDescriptions.Size = new System.Drawing.Size(269, 202);
-            this.richTextBoxDescriptions.TabIndex = 4;
-            this.richTextBoxDescriptions.Text = "Description";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(21, 86);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(269, 128);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "Select unit/building";
             // 
             // FormMain
             // 
@@ -274,6 +298,8 @@
         private System.Windows.Forms.Button buttonAttack;
         private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button buttonSlowDown;
+        private System.Windows.Forms.Button buttonSpeedUp;
     }
 }
 

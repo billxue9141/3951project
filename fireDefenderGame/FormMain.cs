@@ -22,6 +22,9 @@ namespace fireDefenderGame
         /// </summary>
         static int COL = 20;
 
+        static int MAX_TICK_PER_SEC = 50;
+        static int MIN_TICK_PER_SEC = 2;
+
         /// <summary>
         /// length of each rectangle
         /// </summary>
@@ -35,6 +38,7 @@ namespace fireDefenderGame
         int tSec = DateTime.Now.Second;
         int tTicks = 0;
         int totalTicks = 0;
+        int tickPerSec;
 
         //game running?
         bool isRunning = true;
@@ -49,6 +53,7 @@ namespace fireDefenderGame
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
             this.MinimumSize = new Size(800, 600);
             gameBoard = new GameBoard(ROW, COL);
+            tickPerSec = 10;
          }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -97,7 +102,7 @@ namespace fireDefenderGame
                 tTicks = tTicks + 1;
                 totalTicks ++;
                 labelTotalTicksDisplay.Text = totalTicks.ToString();                
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(1000/tickPerSec);
             }
             else
             {
@@ -110,24 +115,39 @@ namespace fireDefenderGame
 
         private void mapPanel_paint(object sender, PaintEventArgs e)
         {
-            var p = sender as Panel;
-            
+            var p = sender as Panel;            
             G = e.Graphics;
 
             G.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
 
             int length = p.Height / ROW;
+
             for (int i = 0; i < COL; i++)
             {
                 for (int j = 0; j < ROW; j++)
                 {
                     r = new Rectangle(i * length, j * length, length, length);
-
-                    G.FillRectangle(Brushes.Green, r);
+                    //if the tile is on fire, fill tile with a different color - replace with an image later
+                    if (gameBoard.board[i, j].fire != null)
+                        G.FillRectangle(Brushes.Red, r);
+                    else
+                        G.FillRectangle(Brushes.Green, r);
+                    
                     G.DrawRectangle(Pens.Black, r);
                 }
             }
         }
 
+        private void buttonSpeedUp_Click(object sender, EventArgs e)
+        {
+            if(tickPerSec < MAX_TICK_PER_SEC)
+                tickPerSec++;
+        }
+
+        private void buttonSlowDown_Click(object sender, EventArgs e)
+        {
+            if (tickPerSec > MIN_TICK_PER_SEC)
+                tickPerSec--;
+        }
     }
 }
