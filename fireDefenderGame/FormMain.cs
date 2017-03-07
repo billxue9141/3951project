@@ -15,12 +15,12 @@ namespace fireDefenderGame
         /// <summary>
         /// number of rows in the game
         /// </summary>
-        static int ROW = 20;
+        static int ROW = 10;
 
         /// <summary>
         /// number of columns in the game
         /// </summary>
-        static int COL = 20;
+        static int COL = 10;
 
         /// <summary>
         /// maximum allowed ticks per sec
