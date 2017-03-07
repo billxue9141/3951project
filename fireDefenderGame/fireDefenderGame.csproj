@@ -70,10 +70,14 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="SmallFire.cs" />
     <Compile Include="Terrain.cs" />
+>>>>>>> 7818de807a1a80200b9e2aad9f2043ed5aa37dd6
     <Compile Include="Tile.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
