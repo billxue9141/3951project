@@ -82,7 +82,7 @@ namespace fireDefenderGame
         {
             while (isRunning)
             {
-                //keep app responsive
+                //keep app responsive ok
                 Application.DoEvents();
 
                 // 1. check user input
