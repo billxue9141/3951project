@@ -16,12 +16,12 @@ namespace fireDefenderGame
         /// <summary>
         /// number of rows in the game
         /// </summary>
-        static int ROW = 10;
+        static int ROW = 15;
 
         /// <summary>
         /// number of columns in the game
         /// </summary>
-        static int COL = 10;
+        static int COL = 15;
 
         /// <summary>
         /// maximum allowed ticks per sec
@@ -150,40 +150,43 @@ namespace fireDefenderGame
             boardGraphicsObject.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
 
             int length = p.Height / ROW;
-
+            Random random = new Random();
             for (int i = 0; i < COL; i++)
             {
                 for (int j = 0; j < ROW; j++)
                 {
+                   
                     r = new Rectangle(i * length, j * length, length, length);
-                    //if the tile is on fire, fill tile with a different color - replace with an image later
-                    if (gameBoard.board[i, j].fire != null)
-                        boardGraphicsObject.FillRectangle(Brushes.Red, r);
-                    else if (gameBoard.board[i, j].terrain.GetType() == typeof(Forest))
+                    //if the tile is on fire, fill tile with a different color - replace with an image later                   
+                    if (gameBoard.board[i, j].terrain.GetType() == typeof(Forest))
                     {
                         try
                         {
-                            Image newImage = Image.FromFile("../../resources/Tile/medievalTile_45.png");
-                            int random = new Random().Next(4);
-                            if (random == 0)        
+                            Image newImage = Image.FromFile("../../resources/Tile/medievalTile_48.png");
+                            int rand = random.Next(4);
+                            if (rand == 0)
                                 newImage = Image.FromFile("../../resources/Tile/medievalTile_46.png");
-                            else if(random == 1)
+                            else if (rand == 1)
                                 newImage = Image.FromFile("../../resources/Tile/medievalTile_47.png");
-                            else if (random == 2)
-                                newImage = Image.FromFile("../../resources/Tile/medievalTile_48.png");
+                            else if (rand == 2)
+                                newImage = Image.FromFile("../../resources/Tile/medievalTile_45.png");
 
                             boardGraphicsObject.DrawImage(newImage, r);
                         }
                         catch (Exception)
                         {
                             //filenotfoundexception
+                            boardGraphicsObject.FillRectangle(Brushes.Green, r);
                         }
 
                     }
-                    else
-                        boardGraphicsObject.FillRectangle(Brushes.Green, r);
+                    if (gameBoard.board[i, j].fire != null)
+                    {
+                        Image newImage = Image.FromFile("../../resources/Structure/medievalStructure_20.png");
+                        boardGraphicsObject.DrawImage(newImage, r);
+                    }
 
-                    boardGraphicsObject.DrawRectangle(Pens.Black, r);
+                    //boardGraphicsObject.DrawRectangle(Pens.Black, r);
                 }
             }
         }
