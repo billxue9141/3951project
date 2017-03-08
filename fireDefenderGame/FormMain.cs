@@ -43,7 +43,7 @@ namespace fireDefenderGame
         int length;
 
         //graphics variables
-        Graphics G;
+        Graphics boardGraphicsObject;
         Rectangle r;
 
         //fps counter
@@ -66,20 +66,24 @@ namespace fireDefenderGame
             this.MinimumSize = new Size(800, 600);
             gameBoard = new GameBoard(ROW, COL);
             initialTicksPerSec = INITIAL_TICK_PER_SEC;
-         }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Show();
             this.Focus();
 
-            G = this.CreateGraphics();
+            boardGraphicsObject = this.CreateGraphics();
             StartGameLoop();
 
         }
 
         private void StartGameLoop()
         {
+            //create & start the tick timer
+            Timer t = new Timer();
+            startTimer(t);
+           
             while (isRunning)
             {
                 //keep app responsive ok
@@ -93,13 +97,13 @@ namespace fireDefenderGame
                 // 6. sound effects & music
 
                 // update tick counter
-                TickCounter();
+                t.Interval = 1000 / initialTicksPerSec;
                 updateCursor();
                 mapPanel.Update();
-                
+
             }
         }
-        
+
         private void updateCursor()
         {
             Point point = Control.MousePosition;
@@ -107,14 +111,27 @@ namespace fireDefenderGame
             labelMouseYDisplay.Text = point.Y.ToString();
         }
 
+
+        private void startTimer(Timer t)
+        {
+            t.Interval = 1000 / initialTicksPerSec; // specify interval time as you want
+            t.Tick += new EventHandler(timer_Tick);
+            t.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            TickCounter();
+        }
+
         private void TickCounter()
         {
             if (currentSecond == DateTime.Now.Second && isRunning)
             {
                 ticksPerSec = ticksPerSec + 1;
-                totalTicks ++;
-                labelTotalTicksDisplay.Text = totalTicks.ToString();                
-                System.Threading.Thread.Sleep(1000/initialTicksPerSec);
+                totalTicks++;
+                labelTotalTicksDisplay.Text = totalTicks.ToString();
+                //System.Threading.Thread.Sleep(1000/initialTicksPerSec);
             }
             else
             {
@@ -127,10 +144,10 @@ namespace fireDefenderGame
 
         private void mapPanel_paint(object sender, PaintEventArgs e)
         {
-            var p = sender as Panel;            
-            G = e.Graphics;
+            var p = sender as Panel;
+            boardGraphicsObject = e.Graphics;
 
-            G.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
+            boardGraphicsObject.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
 
             int length = p.Height / ROW;
 
@@ -141,18 +158,18 @@ namespace fireDefenderGame
                     r = new Rectangle(i * length, j * length, length, length);
                     //if the tile is on fire, fill tile with a different color - replace with an image later
                     if (gameBoard.board[i, j].fire != null)
-                        G.FillRectangle(Brushes.Red, r);
+                        boardGraphicsObject.FillRectangle(Brushes.Red, r);
                     else
-                        G.FillRectangle(Brushes.Green, r);
-                    
-                    G.DrawRectangle(Pens.Black, r);
+                        boardGraphicsObject.FillRectangle(Brushes.Green, r);
+
+                    boardGraphicsObject.DrawRectangle(Pens.Black, r);
                 }
             }
         }
 
         private void buttonSpeedUp_Click(object sender, EventArgs e)
         {
-            if(initialTicksPerSec < MAX_TICK_PER_SEC)
+            if (initialTicksPerSec < MAX_TICK_PER_SEC)
                 initialTicksPerSec++;
         }
 
