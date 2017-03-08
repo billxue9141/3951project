@@ -23,5 +23,10 @@ namespace fireDefenderGame
             spreadChance = MY_SPREAD_CHANCE;
             spreadRadius = MY_SPREAD_RADIUS;
         }
+
+        void update()
+        {
+            currentHp++;
+        }
     }
 }

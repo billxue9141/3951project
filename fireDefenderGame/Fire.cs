@@ -15,5 +15,11 @@ namespace fireDefenderGame
         protected int spreadChance { get; set; }
         protected int damage { get; set; }
 
+        /// <summary>
+        /// update properties of this object on game tick
+        /// </summary>
+        void update() { }
+
+
     }
 }

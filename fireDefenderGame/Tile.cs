@@ -11,7 +11,7 @@ namespace fireDefenderGame
         private int row { get; set; }
         private int col { get; set; }
         public Fire fire { get; set; }
-        private Terrain terrain { get; set; }
+        public Terrain terrain { get; set; }
 
         public Tile(int row, int col)
         {
@@ -19,9 +19,6 @@ namespace fireDefenderGame
             this.col = col;
         }
 
-        public void addFire(Fire fire)
-        {
-            this.fire = fire;
-        }
+
     }
 }

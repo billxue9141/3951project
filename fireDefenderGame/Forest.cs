@@ -10,6 +10,7 @@ namespace fireDefenderGame
     {
         static int MIN_HP = 0;
         static int MAX_HP = 1000;
+        static String LOCATION = "resources/Tile/medievalTile_48.png";
 
         public Forest(int row, int col)
         {

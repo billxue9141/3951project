@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,8 +56,8 @@ namespace fireDefenderGame
         //game running?
         bool isRunning = true;
 
+        //game objects
         GameBoard gameBoard;
-
 
         public FormMain()
         {
@@ -82,24 +83,30 @@ namespace fireDefenderGame
         {
             //create & start the tick timer
             Timer t = new Timer();
+            int prevTick = 0, currTick;
             startTimer(t);
-           
+
             while (isRunning)
             {
                 //keep app responsive ok
                 Application.DoEvents();
-
+                currTick = ticksPerSec;
                 // 1. check user input
+                updateCursor();
                 // 2. check AI
                 // 3. update object data (position, status etc.)
+                if (currTick != prevTick)
+                {
+                    //update all objects (fire for now)
+                }
                 // 4. check triggers and conditions
                 // 5. draw graphics
+                mapPanel.Update();
                 // 6. sound effects & music
 
-                // update tick counter
+                // 7. update tick counter
                 t.Interval = 1000 / initialTicksPerSec;
-                updateCursor();
-                mapPanel.Update();
+                prevTick = ticksPerSec;
 
             }
         }
@@ -121,17 +128,11 @@ namespace fireDefenderGame
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            TickCounter();
-        }
-
-        private void TickCounter()
-        {
             if (currentSecond == DateTime.Now.Second && isRunning)
             {
                 ticksPerSec = ticksPerSec + 1;
                 totalTicks++;
                 labelTotalTicksDisplay.Text = totalTicks.ToString();
-                //System.Threading.Thread.Sleep(1000/initialTicksPerSec);
             }
             else
             {
@@ -139,7 +140,6 @@ namespace fireDefenderGame
                 ticksPerSec = 0;
                 currentSecond = DateTime.Now.Second;
             }
-
         }
 
         private void mapPanel_paint(object sender, PaintEventArgs e)
@@ -159,6 +159,27 @@ namespace fireDefenderGame
                     //if the tile is on fire, fill tile with a different color - replace with an image later
                     if (gameBoard.board[i, j].fire != null)
                         boardGraphicsObject.FillRectangle(Brushes.Red, r);
+                    else if (gameBoard.board[i, j].terrain.GetType() == typeof(Forest))
+                    {
+                        try
+                        {
+                            Image newImage = Image.FromFile("../../resources/Tile/medievalTile_45.png");
+                            int random = new Random().Next(4);
+                            if (random == 0)        
+                                newImage = Image.FromFile("../../resources/Tile/medievalTile_46.png");
+                            else if(random == 1)
+                                newImage = Image.FromFile("../../resources/Tile/medievalTile_47.png");
+                            else if (random == 2)
+                                newImage = Image.FromFile("../../resources/Tile/medievalTile_48.png");
+
+                            boardGraphicsObject.DrawImage(newImage, r);
+                        }
+                        catch (Exception)
+                        {
+                            //filenotfoundexception
+                        }
+
+                    }
                     else
                         boardGraphicsObject.FillRectangle(Brushes.Green, r);
 
