@@ -11,5 +11,11 @@ namespace fireDefenderGame
         protected int row { get; set; }
         protected int col { get; set; }
         protected int currentHp { get; set; }
+        protected string debugLocation;
+
+        public virtual string getImageDebugLocation()
+        {
+            return debugLocation;
+        }
     }
 }

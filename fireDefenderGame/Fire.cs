@@ -18,7 +18,7 @@ namespace fireDefenderGame
         /// <summary>
         /// update properties of this object on game tick
         /// </summary>
-        void update() { }
+        public virtual void update() { }
 
 
     }

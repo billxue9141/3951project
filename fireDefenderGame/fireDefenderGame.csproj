@@ -62,7 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fire.cs" />
-    <Compile Include="Forest.cs" />
+    <Compile Include="Forest4.cs" />
+    <Compile Include="Forest3.cs" />
+    <Compile Include="Forest2.cs" />
+    <Compile Include="Forest1.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

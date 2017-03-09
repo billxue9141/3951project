@@ -1,4 +1,6 @@
-﻿namespace fireDefenderGame
+﻿using System;
+
+namespace fireDefenderGame
 {
     class GameBoard
     {
@@ -17,11 +19,21 @@
 
         public void init()
         {
+            Random random = new Random();
             for (int i = 0; i < row; i++)
                 for (int j = 0; j < col; j++)
                 {
                     Tile newTile = new Tile(i, j);
-                    newTile.terrain = new Forest(i, j);
+                    int rand = random.Next(100);
+                    if (rand < 50)
+                        newTile.terrain = new Forest4(i, j);
+                    else if (rand < 75)
+                        newTile.terrain = new Forest3(i, j);
+                    else if (rand < 90)
+                        newTile.terrain = new Forest2(i, j);
+                    else
+                        newTile.terrain = new Forest1(i, j);
+
                     board[i, j] = newTile;
                 }
             //add 1 fire to the board

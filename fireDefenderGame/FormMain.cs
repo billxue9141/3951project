@@ -44,7 +44,7 @@ namespace fireDefenderGame
         int length;
 
         //graphics variables
-        Graphics boardGraphicsObject;
+        Graphics terrainLayer;
         Rectangle r;
 
         //fps counter
@@ -74,7 +74,7 @@ namespace fireDefenderGame
             this.Show();
             this.Focus();
 
-            boardGraphicsObject = this.CreateGraphics();
+            terrainLayer = this.CreateGraphics();
             StartGameLoop();
 
         }
@@ -145,51 +145,41 @@ namespace fireDefenderGame
         private void mapPanel_paint(object sender, PaintEventArgs e)
         {
             var p = sender as Panel;
-            boardGraphicsObject = e.Graphics;
+            terrainLayer = e.Graphics;
 
-            boardGraphicsObject.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
+            terrainLayer.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Black)), p.DisplayRectangle);
 
             int length = p.Height / ROW;
-            Random random = new Random();
+
             for (int i = 0; i < COL; i++)
             {
                 for (int j = 0; j < ROW; j++)
                 {
-                   
                     r = new Rectangle(i * length, j * length, length, length);
-                    //if the tile is on fire, fill tile with a different color - replace with an image later                   
-                    if (gameBoard.board[i, j].terrain.GetType() == typeof(Forest))
+
+                    try
                     {
-                        try
-                        {
-                            Image newImage = Image.FromFile("../../resources/Tile/medievalTile_48.png");
-                            int rand = random.Next(4);
-                            if (rand == 0)
-                                newImage = Image.FromFile("../../resources/Tile/medievalTile_46.png");
-                            else if (rand == 1)
-                                newImage = Image.FromFile("../../resources/Tile/medievalTile_47.png");
-                            else if (rand == 2)
-                                newImage = Image.FromFile("../../resources/Tile/medievalTile_45.png");
-
-                            boardGraphicsObject.DrawImage(newImage, r);
-                        }
-                        catch (Exception)
-                        {
-                            //filenotfoundexception
-                            boardGraphicsObject.FillRectangle(Brushes.Green, r);
-                        }
-
+                        Image newImage = Image.FromFile(gameBoard.board[i, j].terrain.getImageDebugLocation());
+                        terrainLayer.DrawImage(newImage, r);
                     }
+                    catch (Exception)
+                    {
+                        //if image file can not be found, print tile with green brush.
+                        terrainLayer.FillRectangle(Brushes.Green, r);
+                    }
+
+
                     if (gameBoard.board[i, j].fire != null)
                     {
                         Image newImage = Image.FromFile("../../resources/Structure/medievalStructure_20.png");
-                        boardGraphicsObject.DrawImage(newImage, r);
+                        terrainLayer.DrawImage(newImage, r);
                     }
 
                     //boardGraphicsObject.DrawRectangle(Pens.Black, r);
                 }
             }
         }
+
 
         private void buttonSpeedUp_Click(object sender, EventArgs e)
         {
