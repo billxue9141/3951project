@@ -14,6 +14,12 @@ namespace fireDefenderGame
         protected int spreadRadius { get; set; }
         protected int spreadChance { get; set; }
         protected int damage { get; set; }
+        protected string debugLocation;
+
+        public virtual string getImageDebugLocation()
+        {
+            return debugLocation;
+        }
 
         /// <summary>
         /// update properties of this object on game tick

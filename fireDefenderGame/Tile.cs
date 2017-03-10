@@ -12,13 +12,14 @@ namespace fireDefenderGame
         private int col { get; set; }
         public Fire fire { get; set; }
         public Terrain terrain { get; set; }
+        public bool isSelected;
 
         public Tile(int row, int col)
         {
             this.row = row;
             this.col = col;
+            this.isSelected = false;
         }
-
 
     }
 }

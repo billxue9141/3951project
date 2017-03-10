@@ -37,7 +37,7 @@
             this.labelMouseY = new System.Windows.Forms.Label();
             this.labelMouseYDisplay = new System.Windows.Forms.Label();
             this.labelMouseX = new System.Windows.Forms.Label();
-            this.labelmouseXDisplay = new System.Windows.Forms.Label();
+            this.labelMouseXDisplay = new System.Windows.Forms.Label();
             this.panelUpgrade = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBoxDescriptions = new System.Windows.Forms.RichTextBox();
@@ -61,6 +61,7 @@
             this.mapPanel.Size = new System.Drawing.Size(790, 781);
             this.mapPanel.TabIndex = 0;
             this.mapPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mapPanel_paint);
+            this.mapPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMapPanelMouseClick);
             // 
             // labelTicksPerSec
             // 
@@ -88,7 +89,7 @@
             this.panelInfo.Controls.Add(this.labelMouseY);
             this.panelInfo.Controls.Add(this.labelMouseYDisplay);
             this.panelInfo.Controls.Add(this.labelMouseX);
-            this.panelInfo.Controls.Add(this.labelmouseXDisplay);
+            this.panelInfo.Controls.Add(this.labelMouseXDisplay);
             this.panelInfo.Controls.Add(this.labelTickPerSec);
             this.panelInfo.Controls.Add(this.labelTicksPerSec);
             this.panelInfo.Location = new System.Drawing.Point(820, 133);
@@ -144,14 +145,14 @@
             this.labelMouseX.TabIndex = 5;
             this.labelMouseX.Text = "Mouse X:";
             // 
-            // labelmouseXDisplay
+            // labelMouseXDisplay
             // 
-            this.labelmouseXDisplay.AutoSize = true;
-            this.labelmouseXDisplay.Location = new System.Drawing.Point(115, 94);
-            this.labelmouseXDisplay.Name = "labelmouseXDisplay";
-            this.labelmouseXDisplay.Size = new System.Drawing.Size(68, 20);
-            this.labelmouseXDisplay.TabIndex = 4;
-            this.labelmouseXDisplay.Text = "mouse x";
+            this.labelMouseXDisplay.AutoSize = true;
+            this.labelMouseXDisplay.Location = new System.Drawing.Point(115, 94);
+            this.labelMouseXDisplay.Name = "labelMouseXDisplay";
+            this.labelMouseXDisplay.Size = new System.Drawing.Size(68, 20);
+            this.labelMouseXDisplay.TabIndex = 4;
+            this.labelMouseXDisplay.Text = "mouse x";
             // 
             // panelUpgrade
             // 
@@ -287,7 +288,7 @@
         private System.Windows.Forms.Label labelMouseY;
         private System.Windows.Forms.Label labelMouseYDisplay;
         private System.Windows.Forms.Label labelMouseX;
-        private System.Windows.Forms.Label labelmouseXDisplay;
+        private System.Windows.Forms.Label labelMouseXDisplay;
         private System.Windows.Forms.Label labelTotalTicks;
         private System.Windows.Forms.Label labelTotalTicksDisplay;
         private System.Windows.Forms.Panel panelMenu;

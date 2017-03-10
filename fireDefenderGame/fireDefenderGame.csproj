@@ -61,11 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fire.cs" />
-    <Compile Include="Forest4.cs" />
-    <Compile Include="Forest3.cs" />
-    <Compile Include="Forest2.cs" />
-    <Compile Include="Forest1.cs" />
+    <Compile Include="fires\Fire.cs" />
+    <Compile Include="fires\LargeFire.cs" />
+    <Compile Include="fires\MediumFire.cs" />
+    <Compile Include="terrains\Forest4.cs" />
+    <Compile Include="terrains\Forest3.cs" />
+    <Compile Include="terrains\Forest2.cs" />
+    <Compile Include="terrains\Forest1.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,8 +77,8 @@
     <Compile Include="GameBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SmallFire.cs" />
-    <Compile Include="Terrain.cs" />
+    <Compile Include="fires\SmallFire.cs" />
+    <Compile Include="terrains\Terrain.cs" />
     <Compile Include="Tile.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

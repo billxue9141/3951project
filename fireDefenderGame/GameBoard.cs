@@ -38,6 +38,8 @@ namespace fireDefenderGame
                 }
             //add 1 fire to the board
             board[0, 0].fire = new SmallFire(0, 0);
+            board[0, 1].fire = new MediumFire(0, 1);
+            board[0, 2].fire = new LargeFire(0, 2);
         }
     }
 }
