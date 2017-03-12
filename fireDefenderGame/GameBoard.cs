@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 
 namespace fireDefenderGame
 {
     class GameBoard
     {
         public Tile[,] board { get; }
+        public ArrayList fires;
         private int row;
         private int col;
 
@@ -14,6 +16,7 @@ namespace fireDefenderGame
             this.row = row;
             this.col = col;
             board = new Tile[row, col];
+            fires = new ArrayList();
             init();
         }
 
@@ -26,20 +29,21 @@ namespace fireDefenderGame
                     Tile newTile = new Tile(i, j);
                     int rand = random.Next(100);
                     if (rand < 50)
-                        newTile.terrain = new Forest4(i, j);
+                        newTile.terrain = new Forest4(i, j, random);
                     else if (rand < 75)
-                        newTile.terrain = new Forest3(i, j);
+                        newTile.terrain = new Forest3(i, j, random);
                     else if (rand < 90)
-                        newTile.terrain = new Forest2(i, j);
+                        newTile.terrain = new Forest2(i, j, random);
                     else
-                        newTile.terrain = new Forest1(i, j);
+                        newTile.terrain = new Forest1(i, j, random);
 
                     board[i, j] = newTile;
                 }
             //add 1 fire to the board
-            board[0, 0].fire = new SmallFire(0, 0);
-            board[0, 1].fire = new MediumFire(0, 1);
-            board[0, 2].fire = new LargeFire(0, 2);
+          
+            fires.Add(board[0, 0].fire = new SmallFire(board[0, 0], random));
+            fires.Add(board[1, 0].fire = new MediumFire(board[1, 0], random));
+            fires.Add(board[2, 0].fire = new LargeFire(board[2, 0], random));
         }
     }
 }

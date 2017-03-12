@@ -32,12 +32,10 @@
             this.labelTicksPerSec = new System.Windows.Forms.Label();
             this.labelTickPerSec = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
+            this.labelSelectedLocationDisplay = new System.Windows.Forms.Label();
             this.labelTotalTicks = new System.Windows.Forms.Label();
             this.labelTotalTicksDisplay = new System.Windows.Forms.Label();
-            this.labelMouseY = new System.Windows.Forms.Label();
-            this.labelMouseYDisplay = new System.Windows.Forms.Label();
-            this.labelMouseX = new System.Windows.Forms.Label();
-            this.labelMouseXDisplay = new System.Windows.Forms.Label();
+            this.labelPosition = new System.Windows.Forms.Label();
             this.panelUpgrade = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBoxDescriptions = new System.Windows.Forms.RichTextBox();
@@ -49,6 +47,10 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
+            this.labelTressLeft = new System.Windows.Forms.Label();
+            this.labelFireLevel = new System.Windows.Forms.Label();
+            this.labelTreesLeftDisplay = new System.Windows.Forms.Label();
+            this.labelFireLevelDisplay = new System.Windows.Forms.Label();
             this.panelInfo.SuspendLayout();
             this.panelUpgrade.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -84,18 +86,29 @@
             // 
             // panelInfo
             // 
+            this.panelInfo.Controls.Add(this.labelFireLevelDisplay);
+            this.panelInfo.Controls.Add(this.labelTreesLeftDisplay);
+            this.panelInfo.Controls.Add(this.labelFireLevel);
+            this.panelInfo.Controls.Add(this.labelTressLeft);
+            this.panelInfo.Controls.Add(this.labelSelectedLocationDisplay);
             this.panelInfo.Controls.Add(this.labelTotalTicks);
             this.panelInfo.Controls.Add(this.labelTotalTicksDisplay);
-            this.panelInfo.Controls.Add(this.labelMouseY);
-            this.panelInfo.Controls.Add(this.labelMouseYDisplay);
-            this.panelInfo.Controls.Add(this.labelMouseX);
-            this.panelInfo.Controls.Add(this.labelMouseXDisplay);
+            this.panelInfo.Controls.Add(this.labelPosition);
             this.panelInfo.Controls.Add(this.labelTickPerSec);
             this.panelInfo.Controls.Add(this.labelTicksPerSec);
             this.panelInfo.Location = new System.Drawing.Point(820, 133);
             this.panelInfo.Name = "panelInfo";
             this.panelInfo.Size = new System.Drawing.Size(326, 197);
             this.panelInfo.TabIndex = 4;
+            // 
+            // labelSelectedLocationDisplay
+            // 
+            this.labelSelectedLocationDisplay.AutoSize = true;
+            this.labelSelectedLocationDisplay.Location = new System.Drawing.Point(177, 84);
+            this.labelSelectedLocationDisplay.Name = "labelSelectedLocationDisplay";
+            this.labelSelectedLocationDisplay.Size = new System.Drawing.Size(31, 20);
+            this.labelSelectedLocationDisplay.TabIndex = 5;
+            this.labelSelectedLocationDisplay.Text = "x, y";
             // 
             // labelTotalTicks
             // 
@@ -116,43 +129,15 @@
             this.labelTotalTicksDisplay.TabIndex = 8;
             this.labelTotalTicksDisplay.Text = "total ticks";
             // 
-            // labelMouseY
+            // labelPosition
             // 
-            this.labelMouseY.AutoSize = true;
-            this.labelMouseY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMouseY.Location = new System.Drawing.Point(17, 131);
-            this.labelMouseY.Name = "labelMouseY";
-            this.labelMouseY.Size = new System.Drawing.Size(84, 20);
-            this.labelMouseY.TabIndex = 7;
-            this.labelMouseY.Text = "Mouse Y:";
-            // 
-            // labelMouseYDisplay
-            // 
-            this.labelMouseYDisplay.AutoSize = true;
-            this.labelMouseYDisplay.Location = new System.Drawing.Point(115, 131);
-            this.labelMouseYDisplay.Name = "labelMouseYDisplay";
-            this.labelMouseYDisplay.Size = new System.Drawing.Size(68, 20);
-            this.labelMouseYDisplay.TabIndex = 6;
-            this.labelMouseYDisplay.Text = "mouse y";
-            // 
-            // labelMouseX
-            // 
-            this.labelMouseX.AutoSize = true;
-            this.labelMouseX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMouseX.Location = new System.Drawing.Point(17, 94);
-            this.labelMouseX.Name = "labelMouseX";
-            this.labelMouseX.Size = new System.Drawing.Size(84, 20);
-            this.labelMouseX.TabIndex = 5;
-            this.labelMouseX.Text = "Mouse X:";
-            // 
-            // labelMouseXDisplay
-            // 
-            this.labelMouseXDisplay.AutoSize = true;
-            this.labelMouseXDisplay.Location = new System.Drawing.Point(115, 94);
-            this.labelMouseXDisplay.Name = "labelMouseXDisplay";
-            this.labelMouseXDisplay.Size = new System.Drawing.Size(68, 20);
-            this.labelMouseXDisplay.TabIndex = 4;
-            this.labelMouseXDisplay.Text = "mouse x";
+            this.labelPosition.AutoSize = true;
+            this.labelPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPosition.Location = new System.Drawing.Point(17, 84);
+            this.labelPosition.Name = "labelPosition";
+            this.labelPosition.Size = new System.Drawing.Size(154, 20);
+            this.labelPosition.TabIndex = 5;
+            this.labelPosition.Text = "Selected Position:";
             // 
             // panelUpgrade
             // 
@@ -258,6 +243,44 @@
             this.buttonNewGame.Text = "New Game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
             // 
+            // labelTressLeft
+            // 
+            this.labelTressLeft.AutoSize = true;
+            this.labelTressLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTressLeft.Location = new System.Drawing.Point(17, 113);
+            this.labelTressLeft.Name = "labelTressLeft";
+            this.labelTressLeft.Size = new System.Drawing.Size(90, 20);
+            this.labelTressLeft.TabIndex = 10;
+            this.labelTressLeft.Text = "Trees left:";
+            // 
+            // labelFireLevel
+            // 
+            this.labelFireLevel.AutoSize = true;
+            this.labelFireLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFireLevel.Location = new System.Drawing.Point(20, 142);
+            this.labelFireLevel.Name = "labelFireLevel";
+            this.labelFireLevel.Size = new System.Drawing.Size(86, 20);
+            this.labelFireLevel.TabIndex = 11;
+            this.labelFireLevel.Text = "Fire level:";
+            // 
+            // labelTreesLeftDisplay
+            // 
+            this.labelTreesLeftDisplay.AutoSize = true;
+            this.labelTreesLeftDisplay.Location = new System.Drawing.Point(121, 113);
+            this.labelTreesLeftDisplay.Name = "labelTreesLeftDisplay";
+            this.labelTreesLeftDisplay.Size = new System.Drawing.Size(18, 20);
+            this.labelTreesLeftDisplay.TabIndex = 12;
+            this.labelTreesLeftDisplay.Text = "0";
+            // 
+            // labelFireLevelDisplay
+            // 
+            this.labelFireLevelDisplay.AutoSize = true;
+            this.labelFireLevelDisplay.Location = new System.Drawing.Point(121, 142);
+            this.labelFireLevelDisplay.Name = "labelFireLevelDisplay";
+            this.labelFireLevelDisplay.Size = new System.Drawing.Size(18, 20);
+            this.labelFireLevelDisplay.TabIndex = 13;
+            this.labelFireLevelDisplay.Text = "0";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -285,10 +308,7 @@
         private System.Windows.Forms.Label labelTickPerSec;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Panel panelUpgrade;
-        private System.Windows.Forms.Label labelMouseY;
-        private System.Windows.Forms.Label labelMouseYDisplay;
-        private System.Windows.Forms.Label labelMouseX;
-        private System.Windows.Forms.Label labelMouseXDisplay;
+        private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelTotalTicks;
         private System.Windows.Forms.Label labelTotalTicksDisplay;
         private System.Windows.Forms.Panel panelMenu;
@@ -301,6 +321,11 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button buttonSlowDown;
         private System.Windows.Forms.Button buttonSpeedUp;
+        private System.Windows.Forms.Label labelSelectedLocationDisplay;
+        private System.Windows.Forms.Label labelFireLevelDisplay;
+        private System.Windows.Forms.Label labelTreesLeftDisplay;
+        private System.Windows.Forms.Label labelFireLevel;
+        private System.Windows.Forms.Label labelTressLeft;
     }
 }
 

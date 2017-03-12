@@ -8,8 +8,8 @@ namespace fireDefenderGame
 {
     class Tile
     {
-        private int row { get; set; }
-        private int col { get; set; }
+        public int row { get; set; }
+        public int col { get; set; }
         public Fire fire { get; set; }
         public Terrain terrain { get; set; }
         public bool isSelected;

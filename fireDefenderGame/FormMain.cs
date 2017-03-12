@@ -36,7 +36,7 @@ namespace fireDefenderGame
         /// <summary>
         /// initial ticks per sec
         /// </summary>
-        static int INITIAL_TICK_PER_SEC = 10;
+        static int INITIAL_TICK_PER_SEC = 5;
 
         /// <summary>
         /// length of each tile rectangle
@@ -82,7 +82,6 @@ namespace fireDefenderGame
 
             graphicsLayer = this.CreateGraphics();
             StartGameLoop();
-
         }
 
         private void StartGameLoop()
@@ -103,7 +102,15 @@ namespace fireDefenderGame
                 // 3. update object data (position, status etc.)
                 if (currTick != prevTick)
                 {
-                    //update all objects (fire for now)
+                    foreach (Fire fire in gameBoard.fires)
+                    {
+                        fire.update();
+                    }
+                   //update info panel
+                    if (gameBoard.board[prevX, prevY].fire != null)
+                        labelFireLevelDisplay.Text =  gameBoard.board[prevX, prevY].fire.currentHp.ToString();
+                    if(gameBoard.board[prevX, prevY].terrain != null)
+                        labelTreesLeftDisplay.Text = gameBoard.board[prevX, prevY].terrain.currentHp.ToString();
                 }
                 // 4. check triggers and conditions
                 // 5. draw graphics
@@ -128,11 +135,10 @@ namespace fireDefenderGame
         {
             int currentXPos = (this.PointToClient(Cursor.Position).X - mapPanel.Location.X) / tileLength;
             int currentYPos = (this.PointToClient(Cursor.Position).Y - mapPanel.Location.Y) / tileLength;
-            //these two lines can be removed later
-            labelMouseXDisplay.Text = currentXPos.ToString();
-            labelMouseYDisplay.Text = currentYPos.ToString();
+            labelSelectedLocationDisplay.Text = currentXPos.ToString() + ", " + currentYPos.ToString();
             if (currentXPos < ROW && currentYPos < COL)
             {
+                //update graphics
                 graphicsLayer = mapPanel.CreateGraphics();
                 gameBoard.board[prevX, prevY].isSelected = false;
                 updateTile(prevX, prevY, graphicsLayer);
@@ -140,6 +146,13 @@ namespace fireDefenderGame
                 updateTile(currentXPos, currentYPos, graphicsLayer);
                 prevX = currentXPos;
                 prevY = currentYPos;
+
+                //show tile info
+                labelTreesLeftDisplay.Text = gameBoard.board[currentXPos, currentYPos].terrain.currentHp.ToString();
+                if (gameBoard.board[currentXPos, currentYPos].fire == null)
+                    labelFireLevelDisplay.Text = "0";
+                else
+                    labelFireLevelDisplay.Text = gameBoard.board[currentXPos, currentYPos].fire.currentHp.ToString();
             }
         }
 

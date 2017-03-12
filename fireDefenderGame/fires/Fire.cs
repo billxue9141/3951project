@@ -8,13 +8,21 @@ namespace fireDefenderGame
 {
     abstract class Fire
     {
-        protected int row { get; set; }
-        protected int col { get; set; }
-        protected int currentHp { get; set; }
+        public Tile tile { get; set; }
+        public int currentHp { get; set; }
         protected int spreadRadius { get; set; }
         protected int spreadChance { get; set; }
         protected int damage { get; set; }
+        protected int minDamage { get; set; }
+        protected int maxDamage { get; set; }
         protected string debugLocation;
+        public Random rng;
+
+        public Fire(ref Tile tile, Random rng)
+        {
+            this.tile = tile;
+            this.rng = rng;
+        }
 
         public virtual string getImageDebugLocation()
         {
@@ -24,7 +32,12 @@ namespace fireDefenderGame
         /// <summary>
         /// update properties of this object on game tick
         /// </summary>
-        public virtual void update() { }
+        public virtual void update() {
+            currentHp++;
+            damage = rng.Next(maxDamage - minDamage) + minDamage;
+            tile.terrain.currentHp -= damage;
+
+        }
 
 
     }

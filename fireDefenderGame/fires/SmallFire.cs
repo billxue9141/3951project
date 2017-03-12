@@ -13,22 +13,18 @@ namespace fireDefenderGame
         static int MY_SPREAD_RADIUS = 0;
         static int MY_SPREAD_CHANCE = 0;
         static int MIN_DAMAGE = 1;
-        static int MAX_DAMAGE = 5;
+        static int MAX_DAMAGE = 3;
         public static String IMAGE_DEBUG_LOCATION = "../../resources/Environment/medievalEnvironment_21.png";
 
-        public SmallFire(int row, int col)
-        {
-            this.row = row;
-            this.col = col;
+        public SmallFire(Tile tile, Random rng) : base(ref tile, rng)
+        {           
             currentHp = MIN_HP + 1;
+            minDamage = MIN_DAMAGE;
+            maxDamage = MAX_DAMAGE;
             spreadChance = MY_SPREAD_CHANCE;
             spreadRadius = MY_SPREAD_RADIUS;
             this.debugLocation = IMAGE_DEBUG_LOCATION;
         }
 
-        public override void update()
-        {
-            currentHp++;
-        }
     }
 }
