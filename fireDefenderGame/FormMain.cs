@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,7 +71,7 @@ namespace fireDefenderGame
             tileLength = (mapPanel.Height) / ROW;
             mapPanel.Paint += new PaintEventHandler(mapPanel_paint);
             this.MinimumSize = new Size(800, 600);
-            gameBoard = new GameBoard(ROW, COL);
+            gameBoard = new GameBoard(ROW, COL, this);
             initialTicksPerSec = INITIAL_TICK_PER_SEC;
             this.MouseClick += OnMapPanelMouseClick;
         }
@@ -102,14 +103,29 @@ namespace fireDefenderGame
                 // 3. update object data (position, status etc.)
                 if (currTick != prevTick)
                 {
+                    //if there's no more fire left, win
+                    if (gameBoard.fires == null || gameBoard.fires.Count == 1)
+                    {
+                        break;
+                    }
+
+                    //loop through all fires       
+                    for(int i = 0; i < gameBoard.fires.Count; i++)       
+                        ((Fire)gameBoard.fires[i]).tile.update();
+
+                    //remove dead fires
+                    ArrayList tmp = new ArrayList();
                     foreach (Fire fire in gameBoard.fires)
                     {
-                        fire.update();
+                        if (fire != null)
+                            tmp.Add(fire);
                     }
-                   //update info panel
+                    gameBoard.fires = tmp;
+
+                    //update info panel
                     if (gameBoard.board[prevX, prevY].fire != null)
-                        labelFireLevelDisplay.Text =  gameBoard.board[prevX, prevY].fire.currentHp.ToString();
-                    if(gameBoard.board[prevX, prevY].terrain != null)
+                        labelFireLevelDisplay.Text = gameBoard.board[prevX, prevY].fire.currentHp.ToString();
+                    if (gameBoard.board[prevX, prevY].terrain != null)
                         labelTreesLeftDisplay.Text = gameBoard.board[prevX, prevY].terrain.currentHp.ToString();
                 }
                 // 4. check triggers and conditions
@@ -120,8 +136,8 @@ namespace fireDefenderGame
                 // 7. update tick counter
                 t.Interval = 1000 / initialTicksPerSec;
                 prevTick = ticksPerSec;
-
             }
+            MessageBox.Show("Congratulations", "Game Over", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
         }
 
         /// <summary>
@@ -141,9 +157,9 @@ namespace fireDefenderGame
                 //update graphics
                 graphicsLayer = mapPanel.CreateGraphics();
                 gameBoard.board[prevX, prevY].isSelected = false;
-                updateTile(prevX, prevY, graphicsLayer);
+                updateTile(prevX, prevY);
                 gameBoard.board[currentXPos, currentYPos].isSelected = true;
-                updateTile(currentXPos, currentYPos, graphicsLayer);
+                updateTile(currentXPos, currentYPos);
                 prevX = currentXPos;
                 prevY = currentYPos;
 
@@ -188,16 +204,16 @@ namespace fireDefenderGame
 
             for (int i = 0; i < COL; i++)
                 for (int j = 0; j < ROW; j++)
-                    updateTile(i, j, graphicsLayer);
+                    updateTile(i, j);
         }
 
         /// <summary>
-        /// draw or update all the items on the tile at position x, y
+        /// draw and update all the items on the tile at position x, y
         /// </summary>
         /// <param name="xPos"></param>
         /// <param name="yPos"></param>
         /// <param name="graphicsLayer"></param>
-        public void updateTile(int xPos, int yPos, Graphics graphicsLayer)
+        public void updateTile(int xPos, int yPos)
         {
             r = new Rectangle(xPos * tileLength, yPos * tileLength, tileLength, tileLength);
             Tile currentTile = gameBoard.board[xPos, yPos];
@@ -225,20 +241,32 @@ namespace fireDefenderGame
             catch (Exception)
             {
                 //if image file can not be found, print tile with green brush.
-                graphicsLayer.FillRectangle(Brushes.Green, r);
+                //graphicsLayer.FillRectangle(Brushes.Green, r);
             }
         }
 
         private void buttonSpeedUp_Click(object sender, EventArgs e)
         {
             if (initialTicksPerSec < MAX_TICK_PER_SEC)
-                initialTicksPerSec++;
+            {
+                int tmp = initialTicksPerSec * 2;
+                if (tmp > MAX_TICK_PER_SEC)                
+                    initialTicksPerSec = MAX_TICK_PER_SEC;            
+                else
+                    initialTicksPerSec = tmp;
+            }
         }
 
         private void buttonSlowDown_Click(object sender, EventArgs e)
         {
-            if (initialTicksPerSec > MIN_TICK_PER_SEC)
-                initialTicksPerSec--;
+            if (initialTicksPerSec < MAX_TICK_PER_SEC)
+            {
+                int tmp = initialTicksPerSec / 2;
+                if (tmp < MAX_TICK_PER_SEC)
+                    initialTicksPerSec = MIN_TICK_PER_SEC;
+                else
+                    initialTicksPerSec = tmp;
+            }
         }
     }
 }

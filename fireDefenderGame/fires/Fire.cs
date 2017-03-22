@@ -10,6 +10,8 @@ namespace fireDefenderGame
     {
         public Tile tile { get; set; }
         public int currentHp { get; set; }
+        public int minHp { get; set; }
+        public int maxHp { get; set; }
         protected int spreadRadius { get; set; }
         protected int spreadChance { get; set; }
         protected int damage { get; set; }
@@ -32,13 +34,19 @@ namespace fireDefenderGame
         /// <summary>
         /// update properties of this object on game tick
         /// </summary>
-        public virtual void update() {
+        public virtual void update()
+        {
             currentHp++;
             damage = rng.Next(maxDamage - minDamage) + minDamage;
             tile.terrain.currentHp -= damage;
 
+            if (currentHp >= maxHp || currentHp <= minHp)
+            {
+                transform();
+            }
         }
 
+        public abstract void transform();
 
     }
 }

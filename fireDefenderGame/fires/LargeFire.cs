@@ -8,8 +8,8 @@ namespace fireDefenderGame
 {
     class LargeFire : Fire
     {
-        static int MIN_HP = 200;
-        static int MAX_HP = 500;
+        static int MIN_HP = 600;
+        static int MAX_HP = 1000;
         static int MY_SPREAD_RADIUS = 0;
         static int MY_SPREAD_CHANCE = 0;
         static int MIN_DAMAGE = 7;
@@ -19,11 +19,28 @@ namespace fireDefenderGame
         public LargeFire(Tile tile, Random rng) : base(ref tile, rng)
         {
             currentHp = MIN_HP + 1;
+            minHp = MIN_HP;
+            maxHp = MAX_HP;
             minDamage = MIN_DAMAGE;
             maxDamage = MAX_DAMAGE;
             spreadChance = MY_SPREAD_CHANCE;
             spreadRadius = MY_SPREAD_RADIUS;
             this.debugLocation = IMAGE_DEBUG_LOCATION;
+        }
+
+        public override void transform()
+        {
+            if (currentHp >= maxHp)
+            {
+                currentHp = maxHp;
+            }
+            else if (currentHp <= minHp)
+            {
+                MediumFire tmp = new MediumFire(tile, rng);
+                tmp.currentHp = tmp.maxHp;
+                tile.fire = tmp;
+                tile.gameBoard.main.updateTile(tile.row, tile.col);
+            }
         }
 
     }
