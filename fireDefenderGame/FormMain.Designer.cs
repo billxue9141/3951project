@@ -32,6 +32,10 @@
             this.labelTicksPerSec = new System.Windows.Forms.Label();
             this.labelTickPerSec = new System.Windows.Forms.Label();
             this.panelInfo = new System.Windows.Forms.Panel();
+            this.labelFireLevelDisplay = new System.Windows.Forms.Label();
+            this.labelTreesLeftDisplay = new System.Windows.Forms.Label();
+            this.labelFireLevel = new System.Windows.Forms.Label();
+            this.labelTressLeft = new System.Windows.Forms.Label();
             this.labelSelectedLocationDisplay = new System.Windows.Forms.Label();
             this.labelTotalTicks = new System.Windows.Forms.Label();
             this.labelTotalTicksDisplay = new System.Windows.Forms.Label();
@@ -47,10 +51,6 @@
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
-            this.labelTressLeft = new System.Windows.Forms.Label();
-            this.labelFireLevel = new System.Windows.Forms.Label();
-            this.labelTreesLeftDisplay = new System.Windows.Forms.Label();
-            this.labelFireLevelDisplay = new System.Windows.Forms.Label();
             this.panelInfo.SuspendLayout();
             this.panelUpgrade.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -58,9 +58,10 @@
             // 
             // mapPanel
             // 
-            this.mapPanel.Location = new System.Drawing.Point(24, 21);
+            this.mapPanel.Location = new System.Drawing.Point(16, 14);
+            this.mapPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(790, 781);
+            this.mapPanel.Size = new System.Drawing.Size(527, 508);
             this.mapPanel.TabIndex = 0;
             this.mapPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mapPanel_paint);
             this.mapPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMapPanelMouseClick);
@@ -68,9 +69,10 @@
             // labelTicksPerSec
             // 
             this.labelTicksPerSec.AutoSize = true;
-            this.labelTicksPerSec.Location = new System.Drawing.Point(158, 21);
+            this.labelTicksPerSec.Location = new System.Drawing.Point(105, 14);
+            this.labelTicksPerSec.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTicksPerSec.Name = "labelTicksPerSec";
-            this.labelTicksPerSec.Size = new System.Drawing.Size(31, 20);
+            this.labelTicksPerSec.Size = new System.Drawing.Size(21, 13);
             this.labelTicksPerSec.TabIndex = 2;
             this.labelTicksPerSec.Text = "tps";
             // 
@@ -78,9 +80,10 @@
             // 
             this.labelTickPerSec.AutoSize = true;
             this.labelTickPerSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTickPerSec.Location = new System.Drawing.Point(17, 21);
+            this.labelTickPerSec.Location = new System.Drawing.Point(11, 14);
+            this.labelTickPerSec.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTickPerSec.Name = "labelTickPerSec";
-            this.labelTickPerSec.Size = new System.Drawing.Size(119, 20);
+            this.labelTickPerSec.Size = new System.Drawing.Size(88, 13);
             this.labelTickPerSec.TabIndex = 3;
             this.labelTickPerSec.Text = "Ticks per sec:";
             // 
@@ -96,17 +99,61 @@
             this.panelInfo.Controls.Add(this.labelPosition);
             this.panelInfo.Controls.Add(this.labelTickPerSec);
             this.panelInfo.Controls.Add(this.labelTicksPerSec);
-            this.panelInfo.Location = new System.Drawing.Point(820, 133);
+            this.panelInfo.Location = new System.Drawing.Point(547, 86);
+            this.panelInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(326, 197);
+            this.panelInfo.Size = new System.Drawing.Size(217, 128);
             this.panelInfo.TabIndex = 4;
+            // 
+            // labelFireLevelDisplay
+            // 
+            this.labelFireLevelDisplay.AutoSize = true;
+            this.labelFireLevelDisplay.Location = new System.Drawing.Point(81, 92);
+            this.labelFireLevelDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFireLevelDisplay.Name = "labelFireLevelDisplay";
+            this.labelFireLevelDisplay.Size = new System.Drawing.Size(13, 13);
+            this.labelFireLevelDisplay.TabIndex = 13;
+            this.labelFireLevelDisplay.Text = "0";
+            // 
+            // labelTreesLeftDisplay
+            // 
+            this.labelTreesLeftDisplay.AutoSize = true;
+            this.labelTreesLeftDisplay.Location = new System.Drawing.Point(81, 73);
+            this.labelTreesLeftDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTreesLeftDisplay.Name = "labelTreesLeftDisplay";
+            this.labelTreesLeftDisplay.Size = new System.Drawing.Size(13, 13);
+            this.labelTreesLeftDisplay.TabIndex = 12;
+            this.labelTreesLeftDisplay.Text = "0";
+            // 
+            // labelFireLevel
+            // 
+            this.labelFireLevel.AutoSize = true;
+            this.labelFireLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFireLevel.Location = new System.Drawing.Point(13, 92);
+            this.labelFireLevel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFireLevel.Name = "labelFireLevel";
+            this.labelFireLevel.Size = new System.Drawing.Size(63, 13);
+            this.labelFireLevel.TabIndex = 11;
+            this.labelFireLevel.Text = "Fire level:";
+            // 
+            // labelTressLeft
+            // 
+            this.labelTressLeft.AutoSize = true;
+            this.labelTressLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTressLeft.Location = new System.Drawing.Point(11, 73);
+            this.labelTressLeft.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTressLeft.Name = "labelTressLeft";
+            this.labelTressLeft.Size = new System.Drawing.Size(65, 13);
+            this.labelTressLeft.TabIndex = 10;
+            this.labelTressLeft.Text = "Trees left:";
             // 
             // labelSelectedLocationDisplay
             // 
             this.labelSelectedLocationDisplay.AutoSize = true;
-            this.labelSelectedLocationDisplay.Location = new System.Drawing.Point(177, 84);
+            this.labelSelectedLocationDisplay.Location = new System.Drawing.Point(118, 55);
+            this.labelSelectedLocationDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectedLocationDisplay.Name = "labelSelectedLocationDisplay";
-            this.labelSelectedLocationDisplay.Size = new System.Drawing.Size(31, 20);
+            this.labelSelectedLocationDisplay.Size = new System.Drawing.Size(23, 13);
             this.labelSelectedLocationDisplay.TabIndex = 5;
             this.labelSelectedLocationDisplay.Text = "x, y";
             // 
@@ -114,18 +161,20 @@
             // 
             this.labelTotalTicks.AutoSize = true;
             this.labelTotalTicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalTicks.Location = new System.Drawing.Point(17, 50);
+            this.labelTotalTicks.Location = new System.Drawing.Point(11, 32);
+            this.labelTotalTicks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalTicks.Name = "labelTotalTicks";
-            this.labelTotalTicks.Size = new System.Drawing.Size(100, 20);
+            this.labelTotalTicks.Size = new System.Drawing.Size(75, 13);
             this.labelTotalTicks.TabIndex = 9;
             this.labelTotalTicks.Text = "Total Ticks:";
             // 
             // labelTotalTicksDisplay
             // 
             this.labelTotalTicksDisplay.AutoSize = true;
-            this.labelTotalTicksDisplay.Location = new System.Drawing.Point(158, 50);
+            this.labelTotalTicksDisplay.Location = new System.Drawing.Point(105, 32);
+            this.labelTotalTicksDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalTicksDisplay.Name = "labelTotalTicksDisplay";
-            this.labelTotalTicksDisplay.Size = new System.Drawing.Size(76, 20);
+            this.labelTotalTicksDisplay.Size = new System.Drawing.Size(52, 13);
             this.labelTotalTicksDisplay.TabIndex = 8;
             this.labelTotalTicksDisplay.Text = "total ticks";
             // 
@@ -133,9 +182,10 @@
             // 
             this.labelPosition.AutoSize = true;
             this.labelPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosition.Location = new System.Drawing.Point(17, 84);
+            this.labelPosition.Location = new System.Drawing.Point(11, 55);
+            this.labelPosition.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(154, 20);
+            this.labelPosition.Size = new System.Drawing.Size(110, 13);
             this.labelPosition.TabIndex = 5;
             this.labelPosition.Text = "Selected Position:";
             // 
@@ -145,41 +195,46 @@
             this.panelUpgrade.Controls.Add(this.richTextBoxDescriptions);
             this.panelUpgrade.Controls.Add(this.buttonAttack);
             this.panelUpgrade.Controls.Add(this.buttonMove);
-            this.panelUpgrade.Location = new System.Drawing.Point(820, 336);
+            this.panelUpgrade.Location = new System.Drawing.Point(547, 218);
+            this.panelUpgrade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelUpgrade.Name = "panelUpgrade";
-            this.panelUpgrade.Size = new System.Drawing.Size(326, 466);
+            this.panelUpgrade.Size = new System.Drawing.Size(217, 303);
             this.panelUpgrade.TabIndex = 5;
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(21, 86);
+            this.richTextBox1.Location = new System.Drawing.Point(14, 56);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(269, 128);
+            this.richTextBox1.Size = new System.Drawing.Size(181, 85);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "Select unit/building";
             // 
             // richTextBoxDescriptions
             // 
-            this.richTextBoxDescriptions.Location = new System.Drawing.Point(21, 234);
+            this.richTextBoxDescriptions.Location = new System.Drawing.Point(14, 152);
+            this.richTextBoxDescriptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxDescriptions.Name = "richTextBoxDescriptions";
-            this.richTextBoxDescriptions.Size = new System.Drawing.Size(269, 202);
+            this.richTextBoxDescriptions.Size = new System.Drawing.Size(181, 133);
             this.richTextBoxDescriptions.TabIndex = 4;
             this.richTextBoxDescriptions.Text = "Description";
             // 
             // buttonAttack
             // 
-            this.buttonAttack.Location = new System.Drawing.Point(174, 28);
+            this.buttonAttack.Location = new System.Drawing.Point(116, 18);
+            this.buttonAttack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAttack.Name = "buttonAttack";
-            this.buttonAttack.Size = new System.Drawing.Size(116, 40);
+            this.buttonAttack.Size = new System.Drawing.Size(77, 26);
             this.buttonAttack.TabIndex = 2;
             this.buttonAttack.Text = "Attack";
             this.buttonAttack.UseVisualStyleBackColor = true;
             // 
             // buttonMove
             // 
-            this.buttonMove.Location = new System.Drawing.Point(20, 28);
+            this.buttonMove.Location = new System.Drawing.Point(13, 18);
+            this.buttonMove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMove.Name = "buttonMove";
-            this.buttonMove.Size = new System.Drawing.Size(116, 40);
+            this.buttonMove.Size = new System.Drawing.Size(77, 26);
             this.buttonMove.TabIndex = 1;
             this.buttonMove.Text = "Move";
             this.buttonMove.UseVisualStyleBackColor = true;
@@ -191,16 +246,18 @@
             this.panelMenu.Controls.Add(this.buttonHelp);
             this.panelMenu.Controls.Add(this.buttonPause);
             this.panelMenu.Controls.Add(this.buttonNewGame);
-            this.panelMenu.Location = new System.Drawing.Point(820, 21);
+            this.panelMenu.Location = new System.Drawing.Point(547, 14);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(326, 106);
+            this.panelMenu.Size = new System.Drawing.Size(217, 69);
             this.panelMenu.TabIndex = 6;
             // 
             // buttonSlowDown
             // 
-            this.buttonSlowDown.Location = new System.Drawing.Point(162, 49);
+            this.buttonSlowDown.Location = new System.Drawing.Point(108, 32);
+            this.buttonSlowDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSlowDown.Name = "buttonSlowDown";
-            this.buttonSlowDown.Size = new System.Drawing.Size(116, 40);
+            this.buttonSlowDown.Size = new System.Drawing.Size(77, 26);
             this.buttonSlowDown.TabIndex = 3;
             this.buttonSlowDown.Text = "Slow Down";
             this.buttonSlowDown.UseVisualStyleBackColor = true;
@@ -208,9 +265,10 @@
             // 
             // buttonSpeedUp
             // 
-            this.buttonSpeedUp.Location = new System.Drawing.Point(21, 49);
+            this.buttonSpeedUp.Location = new System.Drawing.Point(14, 32);
+            this.buttonSpeedUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSpeedUp.Name = "buttonSpeedUp";
-            this.buttonSpeedUp.Size = new System.Drawing.Size(116, 40);
+            this.buttonSpeedUp.Size = new System.Drawing.Size(77, 26);
             this.buttonSpeedUp.TabIndex = 2;
             this.buttonSpeedUp.Text = "Speed Up";
             this.buttonSpeedUp.UseVisualStyleBackColor = true;
@@ -218,78 +276,45 @@
             // 
             // buttonHelp
             // 
-            this.buttonHelp.Location = new System.Drawing.Point(227, 3);
+            this.buttonHelp.Location = new System.Drawing.Point(151, 2);
+            this.buttonHelp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonHelp.Name = "buttonHelp";
-            this.buttonHelp.Size = new System.Drawing.Size(96, 40);
+            this.buttonHelp.Size = new System.Drawing.Size(64, 26);
             this.buttonHelp.TabIndex = 1;
             this.buttonHelp.Text = "Help";
             this.buttonHelp.UseVisualStyleBackColor = true;
             // 
             // buttonPause
             // 
-            this.buttonPause.Location = new System.Drawing.Point(125, 3);
+            this.buttonPause.Location = new System.Drawing.Point(83, 2);
+            this.buttonPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonPause.Name = "buttonPause";
-            this.buttonPause.Size = new System.Drawing.Size(96, 40);
+            this.buttonPause.Size = new System.Drawing.Size(64, 26);
             this.buttonPause.TabIndex = 1;
             this.buttonPause.Text = "Pause";
             this.buttonPause.UseVisualStyleBackColor = true;
+            this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click);
             // 
             // buttonNewGame
             // 
-            this.buttonNewGame.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewGame.Location = new System.Drawing.Point(2, 2);
+            this.buttonNewGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonNewGame.Name = "buttonNewGame";
-            this.buttonNewGame.Size = new System.Drawing.Size(116, 40);
+            this.buttonNewGame.Size = new System.Drawing.Size(77, 26);
             this.buttonNewGame.TabIndex = 0;
             this.buttonNewGame.Text = "New Game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
             // 
-            // labelTressLeft
-            // 
-            this.labelTressLeft.AutoSize = true;
-            this.labelTressLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTressLeft.Location = new System.Drawing.Point(17, 113);
-            this.labelTressLeft.Name = "labelTressLeft";
-            this.labelTressLeft.Size = new System.Drawing.Size(90, 20);
-            this.labelTressLeft.TabIndex = 10;
-            this.labelTressLeft.Text = "Trees left:";
-            // 
-            // labelFireLevel
-            // 
-            this.labelFireLevel.AutoSize = true;
-            this.labelFireLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFireLevel.Location = new System.Drawing.Point(20, 142);
-            this.labelFireLevel.Name = "labelFireLevel";
-            this.labelFireLevel.Size = new System.Drawing.Size(86, 20);
-            this.labelFireLevel.TabIndex = 11;
-            this.labelFireLevel.Text = "Fire level:";
-            // 
-            // labelTreesLeftDisplay
-            // 
-            this.labelTreesLeftDisplay.AutoSize = true;
-            this.labelTreesLeftDisplay.Location = new System.Drawing.Point(121, 113);
-            this.labelTreesLeftDisplay.Name = "labelTreesLeftDisplay";
-            this.labelTreesLeftDisplay.Size = new System.Drawing.Size(18, 20);
-            this.labelTreesLeftDisplay.TabIndex = 12;
-            this.labelTreesLeftDisplay.Text = "0";
-            // 
-            // labelFireLevelDisplay
-            // 
-            this.labelFireLevelDisplay.AutoSize = true;
-            this.labelFireLevelDisplay.Location = new System.Drawing.Point(121, 142);
-            this.labelFireLevelDisplay.Name = "labelFireLevelDisplay";
-            this.labelFireLevelDisplay.Size = new System.Drawing.Size(18, 20);
-            this.labelFireLevelDisplay.TabIndex = 13;
-            this.labelFireLevelDisplay.Text = "0";
-            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 842);
+            this.ClientSize = new System.Drawing.Size(791, 547);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelUpgrade);
             this.Controls.Add(this.panelInfo);
             this.Controls.Add(this.mapPanel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMain";
             this.Text = "Fire Defender";
             this.Load += new System.EventHandler(this.Form1_Load);

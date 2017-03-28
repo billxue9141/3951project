@@ -6,7 +6,7 @@ namespace fireDefenderGame
     class GameBoard
     {
         public Tile[,] board { get; }
-        public ArrayList fires;
+        public ArrayList fires{get; set;}
         public FormMain main;
         private int row;
         private int col;

@@ -16,3 +16,12 @@ C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.cs
 C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.FormMain.resources
 C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.Properties.Resources.resources
 C:\Users\Sean\Desktop\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.GenerateResource.Cache
+F:\comp3951\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.exe.config
+F:\comp3951\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.exe
+F:\comp3951\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.pdb
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csprojResolveAssemblyReference.cache
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.FormMain.resources
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.Properties.Resources.resources
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.GenerateResource.Cache
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.exe
+F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.pdb

@@ -26,9 +26,14 @@ namespace fireDefenderGame
         public void update()
         {
             if (fire != null)
-                fire.update();
+                if (fire.currentHp <= 0)
+                {
+                    fire = null;
+                    gameBoard.main.updateTile(row, col);
+                }
+                else
+                    fire.update();
             terrain.update();
         }
-
     }
 }

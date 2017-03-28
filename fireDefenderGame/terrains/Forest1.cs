@@ -23,7 +23,6 @@ namespace fireDefenderGame
         public override void transform()
         {
             currentHp = 0;           
-            tile.fire = null;
         }
     }
 }

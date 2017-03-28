@@ -36,7 +36,11 @@ namespace fireDefenderGame
         /// </summary>
         public virtual void update()
         {
-            currentHp++;
+            if (tile.terrain.currentHp > 0)
+                currentHp++;
+            else
+                currentHp = currentHp - 20;
+
             damage = rng.Next(maxDamage - minDamage) + minDamage;
             tile.terrain.currentHp -= damage;
 

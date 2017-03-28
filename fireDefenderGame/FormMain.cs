@@ -61,6 +61,7 @@ namespace fireDefenderGame
 
         //game running?
         bool isRunning = true;
+        bool isPaused = false;
 
         //game objects
         GameBoard gameBoard;
@@ -94,8 +95,11 @@ namespace fireDefenderGame
 
             while (isRunning)
             {
+                
                 //keep app responsive ok
                 Application.DoEvents();
+                if (isPaused)
+                    continue;
                 currTick = ticksPerSec;
                 // 1. check user input
 
@@ -110,17 +114,18 @@ namespace fireDefenderGame
                     }
 
                     //loop through all fires       
-                    for(int i = 0; i < gameBoard.fires.Count; i++)       
-                        ((Fire)gameBoard.fires[i]).tile.update();
 
-                    //remove dead fires
-                    ArrayList tmp = new ArrayList();
-                    foreach (Fire fire in gameBoard.fires)
+                    for (int i = gameBoard.fires.Count - 1; i > -1; i--)
                     {
-                        if (fire != null)
-                            tmp.Add(fire);
+                        Console.WriteLine(gameBoard.fires.Count);
+                        if (gameBoard.fires[i] == null)
+                        {
+                            Console.WriteLine("null fire");
+                            gameBoard.fires.RemoveAt(i);
+                        }
+                        else
+                            ((Fire)gameBoard.fires[i]).tile.update();
                     }
-                    gameBoard.fires = tmp;
 
                     //update info panel
                     if (gameBoard.board[prevX, prevY].fire != null)
@@ -181,6 +186,8 @@ namespace fireDefenderGame
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            if (isPaused)
+                return;
             if (currentSecond == DateTime.Now.Second && isRunning)
             {
                 ticksPerSec = ticksPerSec + 1;
@@ -250,8 +257,8 @@ namespace fireDefenderGame
             if (initialTicksPerSec < MAX_TICK_PER_SEC)
             {
                 int tmp = initialTicksPerSec * 2;
-                if (tmp > MAX_TICK_PER_SEC)                
-                    initialTicksPerSec = MAX_TICK_PER_SEC;            
+                if (tmp > MAX_TICK_PER_SEC)
+                    initialTicksPerSec = MAX_TICK_PER_SEC;
                 else
                     initialTicksPerSec = tmp;
             }
@@ -266,6 +273,19 @@ namespace fireDefenderGame
                     initialTicksPerSec = MIN_TICK_PER_SEC;
                 else
                     initialTicksPerSec = tmp;
+            }
+        }
+
+        private void buttonPause_Click(object sender, EventArgs e)
+        {
+            if (isPaused) {
+                buttonPause.Text = "Pause";
+                isPaused = false;
+            }
+            else
+            {
+                buttonPause.Text = "Resume";
+                isPaused = true;
             }
         }
     }
