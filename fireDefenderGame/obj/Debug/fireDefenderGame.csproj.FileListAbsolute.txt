@@ -25,3 +25,15 @@ F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.Properties.R
 F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.GenerateResource.Cache
 F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.exe
 F:\comp3951\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.pdb
+G:\VisualStudio Projects\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.exe.config
+G:\VisualStudio Projects\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.exe
+G:\VisualStudio Projects\3951project\fireDefenderGame\bin\Debug\fireDefenderGame.pdb
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csprojResolveAssemblyReference.cache
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.FormMain.resources
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.Menu.resources
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.Properties.Resources.resources
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.GenerateResource.Cache
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.exe
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.pdb
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.dlgGameMode.resources
+G:\VisualStudio Projects\3951project\fireDefenderGame\obj\Debug\fireDefenderGame.dlgSettings.resources

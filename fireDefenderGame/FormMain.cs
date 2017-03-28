@@ -108,23 +108,24 @@ namespace fireDefenderGame
                 if (currTick != prevTick)
                 {
                     //if there's no more fire left, win
-                    if (gameBoard.fires == null || gameBoard.fires.Count == 0)
+                    if (gameBoard.fires == null || gameBoard.fires.Count == 1)
                     {
-                        MessageBox.Show("Congratulations, you saved the forest!", "Congratulations", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                         break;
                     }
 
-                    //loop through all fires 
-                    ArrayList tmpFire = new ArrayList();
-                    foreach(Fire fire in gameBoard.fires)
+                    //loop through all fires       
+
+                    for (int i = gameBoard.fires.Count - 1; i > -1; i--)
                     {
                         Console.WriteLine(gameBoard.fires.Count);
-                        Tile tmpTile = fire.tile;
-                        tmpTile.update();
-                        if (tmpTile.fire != null)
-                            tmpFire.Add(tmpTile.fire);
+                        if (gameBoard.fires[i] == null)
+                        {
+                            Console.WriteLine("null fire");
+                            gameBoard.fires.RemoveAt(i);
+                        }
+                        else
+                            ((Fire)gameBoard.fires[i]).tile.update();
                     }
-                    gameBoard.fires = tmpFire;
 
                     //update info panel
                     if (gameBoard.board[prevX, prevY].fire != null)
@@ -140,9 +141,8 @@ namespace fireDefenderGame
                 // 7. update tick counter
                 t.Interval = 1000 / initialTicksPerSec;
                 prevTick = ticksPerSec;
-            } 
-            
-            //to-do: go to score page or return to main menu here
+            }
+            MessageBox.Show("Congratulations", "Game Over", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
         }
 
         /// <summary>

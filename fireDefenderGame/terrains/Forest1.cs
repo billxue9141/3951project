@@ -22,8 +22,7 @@ namespace fireDefenderGame
 
         public override void transform()
         {
-            Forest0 tmp = new Forest0(tile, rng);
-            tile.terrain = tmp;
+            currentHp = 0;           
         }
     }
 }
