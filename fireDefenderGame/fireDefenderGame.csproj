@@ -64,6 +64,7 @@
     <Compile Include="fires\Fire.cs" />
     <Compile Include="fires\LargeFire.cs" />
     <Compile Include="fires\MediumFire.cs" />
+    <Compile Include="terrains\Forest0.cs" />
     <Compile Include="terrains\Forest4.cs" />
     <Compile Include="terrains\Forest3.cs" />
     <Compile Include="terrains\Forest2.cs" />

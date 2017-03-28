@@ -27,9 +27,10 @@ namespace fireDefenderGame
         {
             if (fire != null)
                 if (fire.currentHp <= 0)
-                {
+                {                   
+                    //gameBoard.fires.Remove(fire);
                     fire = null;
-                    gameBoard.main.updateTile(row, col);
+                    //gameBoard.main.updateTile(row, col);
                 }
                 else
                     fire.update();

@@ -34,13 +34,12 @@ namespace fireDefenderGame
             {
                 MediumFire tmp = new MediumFire(tile, rng);
                 tile.fire = tmp;
-                tile.gameBoard.main.updateTile(tile.row, tile.col);
             }
             else if (currentHp <= minHp)
             {
-                //to-do: implment this when we have units that put out fire
-                currentHp = minHp;
+                //to-do: maybe a sound effect when a fire has been put out?
             }
+            tile.gameBoard.main.updateTile(tile.row, tile.col);
         }
     }
 }

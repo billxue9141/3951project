@@ -39,7 +39,7 @@ namespace fireDefenderGame
             if (tile.terrain.currentHp > 0)
                 currentHp++;
             else
-                currentHp = currentHp - 20;
+                currentHp = currentHp - 10;
 
             damage = rng.Next(maxDamage - minDamage) + minDamage;
             tile.terrain.currentHp -= damage;
