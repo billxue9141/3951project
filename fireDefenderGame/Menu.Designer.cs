@@ -40,17 +40,17 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(269, 44);
+            this.pictureBox1.Location = new System.Drawing.Point(269, 48);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(258, 102);
+            this.pictureBox1.Size = new System.Drawing.Size(258, 111);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // buttonNewgame
             // 
-            this.buttonNewgame.Location = new System.Drawing.Point(305, 185);
+            this.buttonNewgame.Location = new System.Drawing.Point(305, 200);
             this.buttonNewgame.Name = "buttonNewgame";
-            this.buttonNewgame.Size = new System.Drawing.Size(183, 50);
+            this.buttonNewgame.Size = new System.Drawing.Size(183, 54);
             this.buttonNewgame.TabIndex = 1;
             this.buttonNewgame.Text = "New Game";
             this.buttonNewgame.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(305, 263);
+            this.buttonSettings.Location = new System.Drawing.Point(305, 285);
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(183, 50);
+            this.buttonSettings.Size = new System.Drawing.Size(183, 54);
             this.buttonSettings.TabIndex = 2;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // 
             // buttonCredits
             // 
-            this.buttonCredits.Location = new System.Drawing.Point(305, 339);
+            this.buttonCredits.Location = new System.Drawing.Point(305, 367);
             this.buttonCredits.Name = "buttonCredits";
-            this.buttonCredits.Size = new System.Drawing.Size(183, 50);
+            this.buttonCredits.Size = new System.Drawing.Size(183, 54);
             this.buttonCredits.TabIndex = 3;
             this.buttonCredits.Text = "Credits";
             this.buttonCredits.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(305, 416);
+            this.buttonExit.Location = new System.Drawing.Point(305, 451);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(183, 50);
+            this.buttonExit.Size = new System.Drawing.Size(183, 54);
             this.buttonExit.TabIndex = 4;
             this.buttonExit.Text = "Exit Game";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -88,9 +88,9 @@
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 505);
+            this.ClientSize = new System.Drawing.Size(791, 547);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonCredits);
             this.Controls.Add(this.buttonSettings);

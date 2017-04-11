@@ -61,6 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="buildings\Building.cs" />
+    <Compile Include="buildings\FireStation.cs" />
+    <Compile Include="buildings\Pipe.cs" />
+    <Compile Include="buildings\Pump.cs" />
     <Compile Include="dlgSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,12 +80,14 @@
     <Compile Include="dlgGameMode.Designer.cs">
       <DependentUpon>dlgGameMode.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameResource.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="terrains\Forest0.cs" />
     <Compile Include="terrains\Forest4.cs" />
     <Compile Include="terrains\Forest3.cs" />
     <Compile Include="terrains\Forest2.cs" />
@@ -98,6 +104,8 @@
     <Compile Include="fires\SmallFire.cs" />
     <Compile Include="terrains\Terrain.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="units\Defender.cs" />
+    <Compile Include="units\Unit.cs" />
     <EmbeddedResource Include="dlgGameMode.resx">
       <DependentUpon>dlgGameMode.cs</DependentUpon>
     </EmbeddedResource>

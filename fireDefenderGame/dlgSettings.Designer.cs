@@ -37,14 +37,14 @@
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Location = new System.Drawing.Point(100, 45);
+            this.hScrollBar1.Location = new System.Drawing.Point(100, 49);
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(166, 20);
             this.hScrollBar1.TabIndex = 0;
             // 
             // hScrollBar2
             // 
-            this.hScrollBar2.Location = new System.Drawing.Point(100, 97);
+            this.hScrollBar2.Location = new System.Drawing.Point(100, 105);
             this.hScrollBar2.Name = "hScrollBar2";
             this.hScrollBar2.Size = new System.Drawing.Size(166, 20);
             this.hScrollBar2.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             this.labelSound.AutoSize = true;
             this.labelSound.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelSound.Location = new System.Drawing.Point(21, 45);
+            this.labelSound.Location = new System.Drawing.Point(21, 49);
             this.labelSound.Name = "labelSound";
             this.labelSound.Size = new System.Drawing.Size(70, 21);
             this.labelSound.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.labelSFX.AutoSize = true;
             this.labelSFX.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelSFX.Location = new System.Drawing.Point(43, 95);
+            this.labelSFX.Location = new System.Drawing.Point(43, 103);
             this.labelSFX.Name = "labelSFX";
             this.labelSFX.Size = new System.Drawing.Size(46, 21);
             this.labelSFX.TabIndex = 3;
@@ -71,9 +71,9 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(100, 219);
+            this.buttonBack.Location = new System.Drawing.Point(100, 237);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(72, 30);
+            this.buttonBack.Size = new System.Drawing.Size(72, 33);
             this.buttonBack.TabIndex = 6;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -81,9 +81,9 @@
             // 
             // dlgSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 283);
             this.ControlBox = false;
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.labelSFX);

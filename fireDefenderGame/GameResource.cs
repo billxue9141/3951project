@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace fireDefenderGame
+{
+    /// <summary>
+    /// keeps track of the game resources we use.
+    /// </summary>
+    class GameResource
+    {
+        public int waterProduction { get; set; }
+        public int waterUsage { get; set; }
+
+        public GameResource()
+        {
+            waterProduction = 0;
+            waterUsage = 0;
+        }
+    }
+}

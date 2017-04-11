@@ -9,8 +9,9 @@ namespace fireDefenderGame
     class Forest4 : Terrain
     {
         public static int MIN_HP = 5000;
-        public static int MAX_HP = 10000;
+        public static int MAX_HP = 20000;
         public static String IMAGE_DEBUG_LOCATION = "../../resources/Tile/medievalTile_48.png";
+        public static String IMAGE_HASWATER_DEBUG_LOCATION = "../../resources/Tile/forest_hasWater_04.png";
 
         public Forest4(Tile tile, Random rng) : base(tile, rng)
         {
@@ -25,6 +26,13 @@ namespace fireDefenderGame
             Forest3 tmp = new Forest3(tile, rng);
             tmp.currentHp = Forest3.MAX_HP;
             tile.terrain = tmp;
+        }
+
+        public override void setHasWater()
+        {
+            hasWater = true;
+            debugLocation = IMAGE_HASWATER_DEBUG_LOCATION;
+            tile.gameBoard.main.updateTile(tile.row, tile.col);
         }
     }
 }

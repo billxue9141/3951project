@@ -8,10 +8,10 @@ namespace fireDefenderGame
 {
     class MediumFire : Fire
     {
-        static int MIN_HP = 300;
-        static int MAX_HP = 600;
-        static int MY_SPREAD_RADIUS = 0;
-        static int MY_SPREAD_CHANCE = 0;
+        static int MIN_HP = 200;
+        static int MAX_HP = 500;
+        static int MY_SPREAD_RADIUS = 1;
+        static int MY_SPREAD_CHANCE = 1;
         static int MIN_DAMAGE = 4;
         static int MAX_DAMAGE = 6;
         public static String IMAGE_DEBUG_LOCATION = "../../resources/Environment/fire2.png";

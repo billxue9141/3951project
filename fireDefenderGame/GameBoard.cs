@@ -1,30 +1,51 @@
-﻿using System;
+﻿using fireDefenderGame.buildings;
+using System;
 using System.Collections;
 
 namespace fireDefenderGame
 {
+    /// <summary>
+    /// a 2D matrix consists of Tiles.
+    /// Also stores all the fires, units and buildings on the gameboard as arraylist.
+    /// </summary>
     class GameBoard
     {
         public Tile[,] board { get; }
-        public ArrayList fires{get; set;}
+        public ArrayList fires { get; set; }
+        public ArrayList units { get; set; }
+        public ArrayList buildings { get; set; }
+        public Building fireStation { get; set; }
+        public Random random { get; set; }
+        public GameResource gameResource;
         public FormMain main;
         private int row;
         private int col;
 
-
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="row">number of rows on the gameboard</param>
+        /// <param name="col">number of columns on the gameboard</param>
+        /// <param name="main">the windows form that created this object</param>
         public GameBoard(int row, int col, FormMain main)
         {
             this.row = row;
             this.col = col;
             this.main = main;
+            gameResource = new GameResource();
             board = new Tile[row, col];
             fires = new ArrayList();
+            units = new ArrayList();
+            buildings = new ArrayList();
             init();
         }
 
+        /// <summary>
+        /// initiate the game world with simple objects
+        /// </summary>
         public void init()
         {
-            Random random = new Random();
+            random = new Random();
             for (int i = 0; i < row; i++)
                 for (int j = 0; j < col; j++)
                 {
@@ -41,11 +62,34 @@ namespace fireDefenderGame
 
                     board[i, j] = newTile;
                 }
-            //add 1 fire to the board
-          
-            fires.Add(board[0, 0].fire = new SmallFire(board[0, 0], random));
-            fires.Add(board[1, 0].fire = new MediumFire(board[1, 0], random));
-            fires.Add(board[2, 0].fire = new LargeFire(board[2, 0], random));
+            //add 3 fires to the board
+            int randomCol = random.Next(col);
+            fires.Add(board[0, randomCol].fire = new SmallFire(board[0, randomCol], random));
+            randomCol = random.Next(col);
+            fires.Add(board[1, randomCol].fire = new MediumFire(board[1, randomCol], random));
+            randomCol = random.Next(col);
+            fires.Add(board[2, randomCol].fire = new LargeFire(board[2, randomCol], random));
+
+            //add 1 firestation and 1 defender
+            randomCol = random.Next(col);
+            fireStation = new FireStation(board[row - 1, randomCol], random);
+            buildings.Add((board[row - 1, randomCol]).building = fireStation);
+            Tile[] poweredTiles = board[row - 1, randomCol].findNeighbors(fireStation.radius);
+            Tile poweredTile = poweredTiles[random.Next(poweredTiles.Length)];
+            units.Add(poweredTile.unit = new Defender(poweredTile, random));
+        }
+
+        /// <summary>
+        /// check if the location (x,y) is within the board.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Boolean isWithinBoard(int x, int y)
+        {
+            if (x >= 0 && x < FormMain.ROW && y >= 0 && y < FormMain.COL)
+                return true;
+            return false;
         }
 
 
