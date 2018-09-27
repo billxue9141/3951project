@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace fireDefenderGame
 {
-    class Defender:Unit
+    class Defender : Unit
     {
         public static int BUILD_COST = 20;
         public static int UPGRADE_COST = 100;
@@ -16,6 +16,7 @@ namespace fireDefenderGame
         public static int MIN_DAMAGE = 5;
         public static int MAX_DAMAGE = 8;
         public static int ATTACK_RANGE = 1;
+        public static int MAX_RANGE = 3;
         public static int WATER_USAGE = 1;
         public static String INIT_DESCRIPTION = "Defender";
         public static String IMAGE_DEBUG_LOCATION = "../../resources/Unit/character01.png";
@@ -35,15 +36,19 @@ namespace fireDefenderGame
             description = INIT_DESCRIPTION;
 
             nextLevelHp = maxHp * 2;
-            nextLevelMinDamage = minDamage * 2;
-            nextLevelMaxDamage = maxDamage * 2;
+            nextLevelMinDamage = minDamage + minDamage / 2;
+            nextLevelMaxDamage = maxDamage + maxDamage / 2;
             nextLevelRange = attackRange + 1;
+            nextLevelHpRegen = hpRegen;
             tile.gameBoard.gameResource.waterUsage += waterUsage;
         }
 
         override
         public Unit copy()
         {
+            lastAttackedTile.isUnderWaterAttack = false;
+            tile.gameBoard.main.updateTile(lastAttackedTile.row, lastAttackedTile.col);
+
             Unit tmpUnit = new Defender(this.tile, this.rng);
             tmpUnit.currentHp = this.currentHp;
             tmpUnit.minDamage = minDamage;
@@ -57,7 +62,7 @@ namespace fireDefenderGame
             tmpUnit.nextLevelHp = nextLevelHp;
             tmpUnit.nextLevelMinDamage = nextLevelMinDamage;
             tmpUnit.nextLevelMaxDamage = nextLevelMaxDamage;
-            tmpUnit.nextLevelRange = nextLevelRange;
+            tmpUnit.nextLevelRange = attackRange + 1;
             tmpUnit.upgradeCost = upgradeCost;
             tile.gameBoard.gameResource.waterUsage -= waterUsage;
             return tmpUnit;
@@ -70,12 +75,14 @@ namespace fireDefenderGame
             currentHp = maxHp;
             minDamage = nextLevelMinDamage;
             maxDamage = nextLevelMaxDamage;
-            attackRange = nextLevelRange;
+            if (attackRange < MAX_RANGE)
+                attackRange = nextLevelRange;
 
-            nextLevelHp = nextLevelHp * 2;
-            nextLevelMinDamage = nextLevelMinDamage * 2;
-            nextLevelMaxDamage = nextLevelMaxDamage * 2;
-            nextLevelRange = attackRange + 1;
+            nextLevelHp = maxHp * 2;
+            nextLevelMinDamage = minDamage + minDamage / 2;
+            nextLevelMaxDamage = maxDamage + maxDamage / 2;
+            if (nextLevelRange < MAX_RANGE)
+                nextLevelRange = attackRange + 1;
             upgradeCost = upgradeCost * 4;
         }
     }

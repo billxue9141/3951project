@@ -71,6 +71,10 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.panelBuilding = new System.Windows.Forms.Panel();
+            this.labelNextLevelBuildingEnergyProductionDisplay = new System.Windows.Forms.Label();
+            this.labelNextLevelBuildingEnergyProduction = new System.Windows.Forms.Label();
+            this.labelBuildingEnergyProductionDisplay = new System.Windows.Forms.Label();
+            this.labelBuildingEnergyProduction = new System.Windows.Forms.Label();
             this.labelNextLevelBuildingRangeDisplay = new System.Windows.Forms.Label();
             this.labelNextLevelBuildingProductionDisplay = new System.Windows.Forms.Label();
             this.labelNextLevelBuildingDamageDisplay = new System.Windows.Forms.Label();
@@ -91,6 +95,7 @@
             this.labelBuildingName = new System.Windows.Forms.Label();
             this.labelBuildingHp = new System.Windows.Forms.Label();
             this.panelBuildNew = new System.Windows.Forms.Panel();
+            this.buttonBuildEnergyGenerator = new System.Windows.Forms.Button();
             this.buttonBuildPipe = new System.Windows.Forms.Button();
             this.buttonBuildPump = new System.Windows.Forms.Button();
             this.buttonBuildDefender = new System.Windows.Forms.Button();
@@ -502,6 +507,7 @@
             // 
             // buttonPause
             // 
+            this.buttonPause.Enabled = false;
             this.buttonPause.Location = new System.Drawing.Point(4, 3);
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.Size = new System.Drawing.Size(96, 40);
@@ -555,6 +561,10 @@
             // panelBuilding
             // 
             this.panelBuilding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBuilding.Controls.Add(this.labelNextLevelBuildingEnergyProductionDisplay);
+            this.panelBuilding.Controls.Add(this.labelNextLevelBuildingEnergyProduction);
+            this.panelBuilding.Controls.Add(this.labelBuildingEnergyProductionDisplay);
+            this.panelBuilding.Controls.Add(this.labelBuildingEnergyProduction);
             this.panelBuilding.Controls.Add(this.labelNextLevelBuildingRangeDisplay);
             this.panelBuilding.Controls.Add(this.labelNextLevelBuildingProductionDisplay);
             this.panelBuilding.Controls.Add(this.labelNextLevelBuildingDamageDisplay);
@@ -581,10 +591,48 @@
             this.panelBuilding.TabIndex = 7;
             this.panelBuilding.Visible = false;
             // 
+            // labelNextLevelBuildingEnergyProductionDisplay
+            // 
+            this.labelNextLevelBuildingEnergyProductionDisplay.AutoSize = true;
+            this.labelNextLevelBuildingEnergyProductionDisplay.Location = new System.Drawing.Point(169, 370);
+            this.labelNextLevelBuildingEnergyProductionDisplay.Name = "labelNextLevelBuildingEnergyProductionDisplay";
+            this.labelNextLevelBuildingEnergyProductionDisplay.Size = new System.Drawing.Size(180, 20);
+            this.labelNextLevelBuildingEnergyProductionDisplay.TabIndex = 26;
+            this.labelNextLevelBuildingEnergyProductionDisplay.Text = "nl building $ prod display";
+            // 
+            // labelNextLevelBuildingEnergyProduction
+            // 
+            this.labelNextLevelBuildingEnergyProduction.AutoSize = true;
+            this.labelNextLevelBuildingEnergyProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNextLevelBuildingEnergyProduction.Location = new System.Drawing.Point(21, 370);
+            this.labelNextLevelBuildingEnergyProduction.Name = "labelNextLevelBuildingEnergyProduction";
+            this.labelNextLevelBuildingEnergyProduction.Size = new System.Drawing.Size(142, 20);
+            this.labelNextLevelBuildingEnergyProduction.TabIndex = 25;
+            this.labelNextLevelBuildingEnergyProduction.Text = "Energy production:";
+            // 
+            // labelBuildingEnergyProductionDisplay
+            // 
+            this.labelBuildingEnergyProductionDisplay.AutoSize = true;
+            this.labelBuildingEnergyProductionDisplay.Location = new System.Drawing.Point(169, 177);
+            this.labelBuildingEnergyProductionDisplay.Name = "labelBuildingEnergyProductionDisplay";
+            this.labelBuildingEnergyProductionDisplay.Size = new System.Drawing.Size(164, 20);
+            this.labelBuildingEnergyProductionDisplay.TabIndex = 24;
+            this.labelBuildingEnergyProductionDisplay.Text = "building $ prod display";
+            // 
+            // labelBuildingEnergyProduction
+            // 
+            this.labelBuildingEnergyProduction.AutoSize = true;
+            this.labelBuildingEnergyProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBuildingEnergyProduction.Location = new System.Drawing.Point(21, 177);
+            this.labelBuildingEnergyProduction.Name = "labelBuildingEnergyProduction";
+            this.labelBuildingEnergyProduction.Size = new System.Drawing.Size(142, 20);
+            this.labelBuildingEnergyProduction.TabIndex = 23;
+            this.labelBuildingEnergyProduction.Text = "Energy production:";
+            // 
             // labelNextLevelBuildingRangeDisplay
             // 
             this.labelNextLevelBuildingRangeDisplay.AutoSize = true;
-            this.labelNextLevelBuildingRangeDisplay.Location = new System.Drawing.Point(93, 360);
+            this.labelNextLevelBuildingRangeDisplay.Location = new System.Drawing.Point(93, 340);
             this.labelNextLevelBuildingRangeDisplay.Name = "labelNextLevelBuildingRangeDisplay";
             this.labelNextLevelBuildingRangeDisplay.Size = new System.Drawing.Size(176, 20);
             this.labelNextLevelBuildingRangeDisplay.TabIndex = 22;
@@ -593,7 +641,7 @@
             // labelNextLevelBuildingProductionDisplay
             // 
             this.labelNextLevelBuildingProductionDisplay.AutoSize = true;
-            this.labelNextLevelBuildingProductionDisplay.Location = new System.Drawing.Point(178, 322);
+            this.labelNextLevelBuildingProductionDisplay.Location = new System.Drawing.Point(178, 309);
             this.labelNextLevelBuildingProductionDisplay.Name = "labelNextLevelBuildingProductionDisplay";
             this.labelNextLevelBuildingProductionDisplay.Size = new System.Drawing.Size(210, 20);
             this.labelNextLevelBuildingProductionDisplay.TabIndex = 21;
@@ -602,7 +650,7 @@
             // labelNextLevelBuildingDamageDisplay
             // 
             this.labelNextLevelBuildingDamageDisplay.AutoSize = true;
-            this.labelNextLevelBuildingDamageDisplay.Location = new System.Drawing.Point(107, 288);
+            this.labelNextLevelBuildingDamageDisplay.Location = new System.Drawing.Point(107, 281);
             this.labelNextLevelBuildingDamageDisplay.Name = "labelNextLevelBuildingDamageDisplay";
             this.labelNextLevelBuildingDamageDisplay.Size = new System.Drawing.Size(166, 20);
             this.labelNextLevelBuildingDamageDisplay.TabIndex = 20;
@@ -620,7 +668,7 @@
             // labelBuildingRangeDisplay
             // 
             this.labelBuildingRangeDisplay.AutoSize = true;
-            this.labelBuildingRangeDisplay.Location = new System.Drawing.Point(93, 158);
+            this.labelBuildingRangeDisplay.Location = new System.Drawing.Point(93, 141);
             this.labelBuildingRangeDisplay.Name = "labelBuildingRangeDisplay";
             this.labelBuildingRangeDisplay.Size = new System.Drawing.Size(230, 20);
             this.labelBuildingRangeDisplay.TabIndex = 18;
@@ -629,7 +677,7 @@
             // labelBuildingProductionDisplay
             // 
             this.labelBuildingProductionDisplay.AutoSize = true;
-            this.labelBuildingProductionDisplay.Location = new System.Drawing.Point(178, 120);
+            this.labelBuildingProductionDisplay.Location = new System.Drawing.Point(178, 109);
             this.labelBuildingProductionDisplay.Name = "labelBuildingProductionDisplay";
             this.labelBuildingProductionDisplay.Size = new System.Drawing.Size(142, 20);
             this.labelBuildingProductionDisplay.TabIndex = 17;
@@ -638,7 +686,7 @@
             // labelBuildingDamageDisplay
             // 
             this.labelBuildingDamageDisplay.AutoSize = true;
-            this.labelBuildingDamageDisplay.Location = new System.Drawing.Point(107, 88);
+            this.labelBuildingDamageDisplay.Location = new System.Drawing.Point(107, 77);
             this.labelBuildingDamageDisplay.Name = "labelBuildingDamageDisplay";
             this.labelBuildingDamageDisplay.Size = new System.Drawing.Size(177, 20);
             this.labelBuildingDamageDisplay.TabIndex = 16;
@@ -657,7 +705,7 @@
             // 
             this.labelNextLevelBuildingProduction.AutoSize = true;
             this.labelNextLevelBuildingProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextLevelBuildingProduction.Location = new System.Drawing.Point(20, 322);
+            this.labelNextLevelBuildingProduction.Location = new System.Drawing.Point(20, 309);
             this.labelNextLevelBuildingProduction.Name = "labelNextLevelBuildingProduction";
             this.labelNextLevelBuildingProduction.Size = new System.Drawing.Size(136, 20);
             this.labelNextLevelBuildingProduction.TabIndex = 14;
@@ -667,7 +715,7 @@
             // 
             this.labelBuildingProduction.AutoSize = true;
             this.labelBuildingProduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBuildingProduction.Location = new System.Drawing.Point(20, 120);
+            this.labelBuildingProduction.Location = new System.Drawing.Point(20, 109);
             this.labelBuildingProduction.Name = "labelBuildingProduction";
             this.labelBuildingProduction.Size = new System.Drawing.Size(135, 20);
             this.labelBuildingProduction.TabIndex = 13;
@@ -688,7 +736,7 @@
             // 
             this.labelNextLevelBuildingRange.AutoSize = true;
             this.labelNextLevelBuildingRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextLevelBuildingRange.Location = new System.Drawing.Point(20, 360);
+            this.labelNextLevelBuildingRange.Location = new System.Drawing.Point(20, 340);
             this.labelNextLevelBuildingRange.Name = "labelNextLevelBuildingRange";
             this.labelNextLevelBuildingRange.Size = new System.Drawing.Size(61, 20);
             this.labelNextLevelBuildingRange.TabIndex = 11;
@@ -698,7 +746,7 @@
             // 
             this.labelNextLevelBuildingDamage.AutoSize = true;
             this.labelNextLevelBuildingDamage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextLevelBuildingDamage.Location = new System.Drawing.Point(20, 288);
+            this.labelNextLevelBuildingDamage.Location = new System.Drawing.Point(20, 281);
             this.labelNextLevelBuildingDamage.Name = "labelNextLevelBuildingDamage";
             this.labelNextLevelBuildingDamage.Size = new System.Drawing.Size(74, 20);
             this.labelNextLevelBuildingDamage.TabIndex = 10;
@@ -728,7 +776,7 @@
             // 
             this.labelBuildingRange.AutoSize = true;
             this.labelBuildingRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBuildingRange.Location = new System.Drawing.Point(20, 158);
+            this.labelBuildingRange.Location = new System.Drawing.Point(20, 141);
             this.labelBuildingRange.Name = "labelBuildingRange";
             this.labelBuildingRange.Size = new System.Drawing.Size(61, 20);
             this.labelBuildingRange.TabIndex = 7;
@@ -738,7 +786,7 @@
             // 
             this.labelBuildingDamage.AutoSize = true;
             this.labelBuildingDamage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBuildingDamage.Location = new System.Drawing.Point(20, 88);
+            this.labelBuildingDamage.Location = new System.Drawing.Point(20, 77);
             this.labelBuildingDamage.Name = "labelBuildingDamage";
             this.labelBuildingDamage.Size = new System.Drawing.Size(74, 20);
             this.labelBuildingDamage.TabIndex = 6;
@@ -768,14 +816,25 @@
             // panelBuildNew
             // 
             this.panelBuildNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBuildNew.Controls.Add(this.buttonBuildEnergyGenerator);
             this.panelBuildNew.Controls.Add(this.buttonBuildPipe);
             this.panelBuildNew.Controls.Add(this.buttonBuildPump);
             this.panelBuildNew.Controls.Add(this.buttonBuildDefender);
             this.panelBuildNew.Location = new System.Drawing.Point(518, 17);
             this.panelBuildNew.Name = "panelBuildNew";
-            this.panelBuildNew.Size = new System.Drawing.Size(326, 217);
+            this.panelBuildNew.Size = new System.Drawing.Size(326, 277);
             this.panelBuildNew.TabIndex = 8;
             this.panelBuildNew.Visible = false;
+            // 
+            // buttonBuildEnergyGenerator
+            // 
+            this.buttonBuildEnergyGenerator.Location = new System.Drawing.Point(3, 207);
+            this.buttonBuildEnergyGenerator.Name = "buttonBuildEnergyGenerator";
+            this.buttonBuildEnergyGenerator.Size = new System.Drawing.Size(320, 40);
+            this.buttonBuildEnergyGenerator.TabIndex = 15;
+            this.buttonBuildEnergyGenerator.Text = "Build Energy Generator";
+            this.buttonBuildEnergyGenerator.UseVisualStyleBackColor = true;
+            this.buttonBuildEnergyGenerator.Click += new System.EventHandler(this.buttonBuildEnergyGenerator_Click);
             // 
             // buttonBuildPipe
             // 
@@ -908,6 +967,11 @@
         private System.Windows.Forms.Label labelNextLevelBuildingProductionDisplay;
         private System.Windows.Forms.Label labelNextLevelBuildingDamageDisplay;
         private System.Windows.Forms.Label labelNextLevelBuildingHpDisplay;
+        private System.Windows.Forms.Button buttonBuildEnergyGenerator;
+        private System.Windows.Forms.Label labelNextLevelBuildingEnergyProductionDisplay;
+        private System.Windows.Forms.Label labelNextLevelBuildingEnergyProduction;
+        private System.Windows.Forms.Label labelBuildingEnergyProductionDisplay;
+        private System.Windows.Forms.Label labelBuildingEnergyProduction;
     }
 }
 

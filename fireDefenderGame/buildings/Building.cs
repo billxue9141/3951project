@@ -23,12 +23,14 @@ namespace fireDefenderGame.buildings
         public int waterProduction { get; set; }
         public int waterUsage { get; set; }
         public int radius { get; set; }
+        public int energyProduction { get; set; }
 
         public int upgradeCost { get; set; }
         public int nextLevelHp { get; set; }
         public int nextLevelMinDamage { get; set; }
         public int nextLevelMaxDamage { get; set; }
         public int nextLevelWaterProduction { get; set; }
+        public int nextLevelEnergyProduction { get; set; }
         public int nextLevelRange { get; set; }
         protected string debugLocation;
 
@@ -64,6 +66,14 @@ namespace fireDefenderGame.buildings
             }
         }
 
-        public virtual void upgrade() { }
+        public virtual void upgrade() {
+            tile.gameBoard.gameResource.waterProduction += nextLevelWaterProduction - waterProduction;
+            tile.gameBoard.gameResource.energyGeneration += nextLevelEnergyProduction - energyProduction;
+
+            radius = nextLevelRange;
+            waterProduction = nextLevelWaterProduction;
+            energyProduction = nextLevelEnergyProduction;
+        }
+
     }
 }

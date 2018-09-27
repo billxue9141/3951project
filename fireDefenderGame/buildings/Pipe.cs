@@ -15,11 +15,12 @@ namespace fireDefenderGame.buildings
         public static int UPGRADE_COST = 50;
         public static int MIN_HP = 0;
         public static int MAX_HP = 1000;
+        public static int WATER_USAGE = 1;
         public static int WATER_PRODUCTION = 0;
+        public static int ENERGY_PRODUCTION = 0;
         static int MIN_DAMAGE = 0;
         static int MAX_DAMAGE = 0;
         static int RADIUS = 2;
-        static int WATER_USAGE = 1;
         public static String INIT_DESCRIPTION = "Water Pipe";
         public static String IMAGE_DEBUG_LOCATION = "../../resources/Structure/medievalStructure_12.png";
 
@@ -32,7 +33,9 @@ namespace fireDefenderGame.buildings
             maxDamage = MAX_DAMAGE;
             radius = RADIUS;
             currentHp = maxHp;
+            waterUsage = WATER_USAGE;
             waterProduction = WATER_PRODUCTION;
+            energyProduction = ENERGY_PRODUCTION;
             waterUsage = WATER_USAGE;
             description = INIT_DESCRIPTION;
             upgradeCost = UPGRADE_COST;
@@ -42,14 +45,17 @@ namespace fireDefenderGame.buildings
             nextLevelMaxDamage = maxDamage;
             nextLevelRange = radius + 1;
             nextLevelWaterProduction = waterProduction;
+            nextLevelEnergyProduction = energyProduction;
 
             tile.gameBoard.gameResource.waterUsage += waterUsage;
+            tile.gameBoard.gameResource.waterProduction += waterProduction;
+            tile.gameBoard.gameResource.energyGeneration += energyProduction;
         }
 
         public override void upgrade()
         {
             base.upgrade();
-            radius = nextLevelRange;
+
             nextLevelRange = radius + 1;
             upgradeCost = upgradeCost * 2;
             update();

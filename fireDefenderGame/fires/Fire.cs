@@ -13,8 +13,10 @@ namespace fireDefenderGame
     /// </summary>
     abstract class Fire
     {
+        public static int DEATH_BONUS_ENERGY = 50;
         public Tile tile { get; set; }
         public int currentHp { get; set; }
+        public int deathBonusEnergy { get; set; }
         public int minHp { get; set; }
         public int maxHp { get; set; }
         protected int spreadRadius { get; set; }
@@ -29,6 +31,7 @@ namespace fireDefenderGame
         {
             this.tile = tile;
             this.rng = rng;
+            deathBonusEnergy = DEATH_BONUS_ENERGY;
         }
 
         /// <summary>

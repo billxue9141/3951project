@@ -21,18 +21,21 @@ namespace fireDefenderGame
         public int minDamage { get; set; }
         public int maxDamage { get; set; }
         public int waterUsage { get; set; }
+        public Tile lastAttackedTile { get; set; }
 
         public int upgradeCost { get; set; }
         public int nextLevelHp { get; set; }
         public int nextLevelMinDamage { get; set; }
         public int nextLevelMaxDamage { get; set; }
         public int nextLevelRange { get; set; }
+        public int nextLevelHpRegen { get; set; }
         protected string debugLocation;
 
         public Unit(Tile tile, Random rng)
         {
             this.tile = tile;
             this.rng = rng;
+            lastAttackedTile = tile;
         }
 
         /// <summary>
@@ -49,26 +52,52 @@ namespace fireDefenderGame
         /// </summary>
         public virtual void update()
         {
+            //regenerate unit's hp based on hpRegen
             if (currentHp < maxHp)
                 currentHp += hpRegen;
+
+            //reset the last tile under attack
+            if (lastAttackedTile.isUnderWaterAttack)
+            {
+                lastAttackedTile.isUnderWaterAttack = false;
+                tile.gameBoard.main.updateTile(lastAttackedTile.row, lastAttackedTile.col);
+            }
+
+            //if there's no fire within attack range, do nothing
             if (tile.countNeighborsWithFire(attackRange) == 0)
                 if (tile.fire == null)
                     return;
 
             damage = rng.Next(maxDamage - minDamage) + minDamage;
-            if (tile.fire != null)
+
+            Tile tileWithSmallestFire;
+            if(tile.fire == null)
             {
-                tile.fire.currentHp -= damage;
-                return;
+                Tile[] neighborsWithFire = tile.findNeighborsWithFire(attackRange);
+                tileWithSmallestFire = neighborsWithFire[0];
+
+                foreach (Tile tile in neighborsWithFire)
+                    if (tile.fire.currentHp < tileWithSmallestFire.fire.currentHp)
+                        tileWithSmallestFire = tile;
             }
-            Tile[] neighborsWithFire = tile.findNeighborsWithFire(attackRange);
-            Tile tileWithSmallestFire = neighborsWithFire[0];
-
-            foreach (Tile tile in neighborsWithFire)
-                if (tile.fire.currentHp < tileWithSmallestFire.fire.currentHp)
-                    tileWithSmallestFire = tile;
-
+            else
+            {
+                tileWithSmallestFire = tile;
+            }
+          
             tileWithSmallestFire.fire.currentHp -= damage;
+
+            if(tileWithSmallestFire != lastAttackedTile)
+            {
+                lastAttackedTile.isUnderWaterAttack = false;
+                tile.gameBoard.main.updateTile(lastAttackedTile.row, lastAttackedTile.col);
+            }
+
+            tileWithSmallestFire.isUnderWaterAttack = true;
+            tile.gameBoard.main.updateTile(tileWithSmallestFire.row, tileWithSmallestFire.col);
+
+            lastAttackedTile = tileWithSmallestFire;
+
         }
 
         /// <summary>

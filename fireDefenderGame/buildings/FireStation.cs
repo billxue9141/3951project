@@ -15,7 +15,9 @@ namespace fireDefenderGame.buildings
         public static int UPGRADE_COST = 30;
         public static int MIN_HP = 0;
         public static int MAX_HP = 1000;
+        public static int WATER_USAGE = 0;
         public static int WATER_PRODUCTION = 1;
+        public static int ENERGY_PRODUCTION = 1;
         static int MIN_DAMAGE = 0;
         static int MAX_DAMAGE = 0;
         static int RADIUS = 1;
@@ -31,29 +33,33 @@ namespace fireDefenderGame.buildings
             maxDamage = MAX_DAMAGE;
             radius = RADIUS;
             currentHp = maxHp;
+            waterUsage = WATER_USAGE;
             waterProduction = WATER_PRODUCTION;
+            energyProduction = ENERGY_PRODUCTION;
             description = INIT_DESCRIPTION;
             tile.terrain = new Forest1(tile, rng);
             upgradeCost = UPGRADE_COST;
+
 
             nextLevelHp = maxHp;
             nextLevelMinDamage = minDamage;
             nextLevelMaxDamage = maxDamage;
             nextLevelRange = radius + 1;
             nextLevelWaterProduction = waterProduction + 1;
+            nextLevelEnergyProduction = energyProduction + 1;
 
+            tile.gameBoard.gameResource.waterUsage += waterUsage;
             tile.gameBoard.gameResource.waterProduction += waterProduction;
+            tile.gameBoard.gameResource.energyGeneration += energyProduction;
         }
 
         public override void upgrade()
         {
-            base.upgrade();
-            radius = nextLevelRange;
-            tile.gameBoard.gameResource.waterProduction += nextLevelWaterProduction - waterProduction;
-            waterProduction = nextLevelWaterProduction;
+            base.upgrade();          
 
             nextLevelRange = radius + 1;
             nextLevelWaterProduction = waterProduction + 1;
+            nextLevelEnergyProduction = energyProduction + 1;
             upgradeCost = upgradeCost * 3;
             update();
         }

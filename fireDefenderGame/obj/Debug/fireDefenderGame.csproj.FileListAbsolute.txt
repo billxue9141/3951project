@@ -67,3 +67,20 @@ C:\Users\Owner\Desktop\3951project-master\fireDefenderGame\obj\Debug\fireDefende
 C:\Users\Bill Xue\Documents\Visual Studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.dlgGameMode.resources
 C:\Users\Bill Xue\Documents\Visual Studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.dlgSettings.resources
 C:\Users\Bill Xue\Documents\Visual Studio 2015\Projects\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.Menu.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\bin\Debug\fireDefenderGame.exe.config
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\bin\Debug\fireDefenderGame.exe
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\bin\Debug\fireDefenderGame.pdb
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.dlgGameMode.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.dlgSettings.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.FormMain.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.Menu.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.Properties.Resources.resources
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.GenerateResource.Cache
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.exe
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.pdb
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\bin\Debug\fireDefenderGame.exe.manifest
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\bin\Debug\fireDefenderGame.application
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.exe.manifest
+C:\Users\Owner\Desktop\fireDefenderGame\fireDefenderGame\obj\Debug\fireDefenderGame.application

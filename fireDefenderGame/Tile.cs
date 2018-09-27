@@ -20,6 +20,7 @@ namespace fireDefenderGame
         public Building building { get; set; }
         public Terrain terrain { get; set; }
         public bool isSelected;
+        public bool isUnderWaterAttack { get; set; }
 
         public Tile(int row, int col, GameBoard gameBoard)
         {
@@ -27,6 +28,7 @@ namespace fireDefenderGame
             this.col = col;
             this.gameBoard = gameBoard;
             this.isSelected = false;
+            this.isUnderWaterAttack = false;
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace fireDefenderGame
             if (fire != null)
                 if (fire.currentHp <= 0)
                 {
+                    gameBoard.gameResource.energy += fire.deathBonusEnergy;
                     fire = null;
                     gameBoard.main.updateTile(row, col);
                 }

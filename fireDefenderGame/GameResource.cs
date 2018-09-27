@@ -13,11 +13,23 @@ namespace fireDefenderGame
     {
         public int waterProduction { get; set; }
         public int waterUsage { get; set; }
+        public int energy { get; set; }
+        public int energyGeneration {get;set; }
 
         public GameResource()
         {
             waterProduction = 0;
             waterUsage = 0;
+            energy = 0;
+            energyGeneration = 0;
+        }
+
+        /// <summary>
+        /// update the resources on the board
+        /// </summary>
+        public void update()
+        {
+            energy += energyGeneration;
         }
     }
 }

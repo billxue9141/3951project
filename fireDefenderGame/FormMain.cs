@@ -31,7 +31,7 @@ namespace fireDefenderGame
         /// <summary>
         /// initial ticks per sec
         /// </summary>
-        static int INITIAL_TICK_PER_SEC = 5;
+        static int INITIAL_TICK_PER_SEC = 3;
 
         /// <summary>
         /// length of each tile rectangle
@@ -55,7 +55,6 @@ namespace fireDefenderGame
         int currentSecond = DateTime.Now.Second;
         int ticksPerSec = 0;
         int totalTicks = 0;
-        int energy = 0;  //total ticks is used to calculate energy
         int initialTicksPerSec;
 
         //game running?
@@ -214,6 +213,7 @@ namespace fireDefenderGame
         /// <param name="e"></param>
         protected void OnMapPanelMouseClick(Object sender, MouseEventArgs e)
         {
+            buttonPause.Enabled = true;
             int currentXPos = (this.PointToClient(Cursor.Position).X - mapPanel.Location.X) / tileLength;
             int currentYPos = (this.PointToClient(Cursor.Position).Y - mapPanel.Location.Y) / tileLength;
             labelSelectedLocationDisplay.Text = currentXPos.ToString() + ", " + currentYPos.ToString();
@@ -238,6 +238,10 @@ namespace fireDefenderGame
                     updateTile(prevX, prevY);
                     updateTile(currentXPos, currentYPos);
                     panelUnit.Visible = true;
+                }
+                else
+                {
+                    selectedUnit = null;
                 }
 
                 //update graphics
@@ -301,6 +305,10 @@ namespace fireDefenderGame
                     graphicsLayer.DrawImage(newImage, r);
                 }
 
+                //show tiles where fire is being put out
+                if (currentTile.isUnderWaterAttack)
+                    graphicsLayer.DrawRectangle(Pens.Blue, new Rectangle(xPos * tileLength, yPos * tileLength, tileLength - 1, tileLength - 1));
+
                 //draw selection
                 if (currentTile.isSelected)
                     graphicsLayer.DrawRectangle(Pens.Red, new Rectangle(xPos * tileLength, yPos * tileLength, tileLength - 1, tileLength - 1));
@@ -308,7 +316,7 @@ namespace fireDefenderGame
             catch (Exception)
             {
                 //if image file can not be found, print tile with green brush.
-                graphicsLayer.FillRectangle(Brushes.Green, r);
+                //graphicsLayer.FillRectangle(Brushes.Green, r);
             }
         }
 
@@ -326,7 +334,7 @@ namespace fireDefenderGame
                 labelUnitName.Text = tile.unit.description;
                 labelUnitHpDisplay.Text = tile.unit.currentHp.ToString();
                 labelUnitDamageDisplay.Text = tile.unit.minDamage + " to " + tile.unit.maxDamage;
-                labelUnitRangeDisplay.Text = tile.unit.nextLevelRange.ToString();
+                labelUnitRangeDisplay.Text = tile.unit.attackRange.ToString();
                 labelUnitHpRegenDisplay.Text = tile.unit.hpRegen.ToString();
 
                 labelNextLevelUnitHpDisplay.Text = tile.unit.nextLevelHp.ToString();
@@ -334,10 +342,10 @@ namespace fireDefenderGame
                 buttonUnitUpgrade.Text = "Upgrade (" + tile.unit.upgradeCost + " Energy)";
                 //for now these stats doesn't change
                 labelNextLevelUnitHpRegenDisplay.Text = tile.unit.hpRegen.ToString();
-                labelNextLevelUnitRangeDisplay.Text = tile.unit.attackRange.ToString();
+                labelNextLevelUnitRangeDisplay.Text = tile.unit.nextLevelRange.ToString();
 
                 //if player doesn't have enough energy for upgrade, disable the upgrade button
-                if (energy < tile.unit.upgradeCost)
+                if (gameBoard.gameResource.energy < tile.unit.upgradeCost)
                     buttonUnitUpgrade.Enabled = false;
                 else
                     buttonUnitUpgrade.Enabled = true;
@@ -354,15 +362,17 @@ namespace fireDefenderGame
                 labelBuildingDamageDisplay.Text = tile.building.minDamage + " to " + tile.building.maxDamage;
                 labelBuildingProductionDisplay.Text = tile.building.waterProduction.ToString();
                 labelBuildingRangeDisplay.Text = tile.building.radius.ToString();
+                labelBuildingEnergyProductionDisplay.Text = tile.building.energyProduction.ToString();
 
                 labelNextLevelBuildingHpDisplay.Text = tile.building.nextLevelHp.ToString();
                 labelNextLevelBuildingDamageDisplay.Text = tile.building.nextLevelMinDamage + " to " + tile.building.nextLevelMaxDamage;
                 labelNextLevelBuildingProductionDisplay.Text = tile.building.nextLevelWaterProduction.ToString();
                 labelNextLevelBuildingRangeDisplay.Text = tile.building.nextLevelRange.ToString();
+                labelNextLevelBuildingEnergyProductionDisplay.Text = tile.building.nextLevelEnergyProduction.ToString();
 
                 buttonBuildingUpgrade.Text = "Upgrade (" + tile.building.upgradeCost + " Energy)";
                 //if player doesn't have enough energy for upgrade, disable the upgrade button
-                if (energy < tile.building.upgradeCost)
+                if (gameBoard.gameResource.energy < tile.building.upgradeCost)
                     buttonBuildingUpgrade.Enabled = false;
                 else
                     buttonBuildingUpgrade.Enabled = true;
@@ -379,43 +389,50 @@ namespace fireDefenderGame
                     buttonBuildPipe.Enabled = false;
                     buttonBuildDefender.Enabled = false;
                     buttonBuildPump.Enabled = false;
+                    buttonBuildEnergyGenerator.Enabled = false;
                 }
                 else
                 {
-                    buttonBuildPump.Enabled = true;
+                    //enable build Pump button if player has enough energy
+                    if (gameBoard.gameResource.energy < Pump.BUILD_COST)
+                        buttonBuildPump.Enabled = false;
+                    else
+                        buttonBuildPump.Enabled = true;
 
                     if (gameBoard.gameResource.waterUsage >= gameBoard.gameResource.waterProduction)
                     {
                         buttonBuildPipe.Enabled = false;
                         buttonBuildDefender.Enabled = false;
+                        buttonBuildEnergyGenerator.Enabled = false;
                         buttonBuildPump.Text = "Build Pump (" + Pump.BUILD_COST + " Energy)";
                         buttonBuildPipe.Text = "Build Pipe (need more water)";
                         buttonBuildDefender.Text = "Build Defender (need more water)";
+                        buttonBuildEnergyGenerator.Text = "Build Energy Generator (need more water)";
                     }
                     else
                     {
                         buttonBuildPipe.Text = "Build Pipe (" + Pipe.BUILD_COST + " Energy)";
                         buttonBuildDefender.Text = "Build Defender (" + Defender.BUILD_COST + " Energy)";
                         buttonBuildPump.Text = "Build Pump (" + Pump.BUILD_COST + " Energy)";
+                        buttonBuildEnergyGenerator.Text = "Build Energy Generator (" + EnergyGenerator.BUILD_COST + " Energy)";
 
                         //enable build defender button if player has engough energy
-                        if (energy < Defender.BUILD_COST)
+                        if (gameBoard.gameResource.energy < Defender.BUILD_COST)
                             buttonBuildDefender.Enabled = false;
                         else
                             buttonBuildDefender.Enabled = true;
 
                         //enable build pipe button if player has enough energy
-                        if (energy < Pipe.BUILD_COST)
+                        if (gameBoard.gameResource.energy < Pipe.BUILD_COST)
                             buttonBuildPipe.Enabled = false;
                         else
                             buttonBuildPipe.Enabled = true;
 
-                        //enable build Pump button if player has enough energy
-                        if (energy < Pump.BUILD_COST)
-                            buttonBuildPump.Enabled = false;
+                        //enable build energy generator if player has enough energy
+                        if (gameBoard.gameResource.energy < EnergyGenerator.BUILD_COST)
+                            buttonBuildEnergyGenerator.Enabled = false;
                         else
-                            buttonBuildPump.Enabled = true;
-
+                            buttonBuildEnergyGenerator.Enabled = true;
                     }
                 }
             }
@@ -441,8 +458,8 @@ namespace fireDefenderGame
             {
                 ticksPerSec = ticksPerSec + 1;
                 totalTicks++;
-                energy++;
-                labelEnergyDisplay.Text = energy.ToString();
+                gameBoard.gameResource.energy += gameBoard.gameResource.energyGeneration;
+                labelEnergyDisplay.Text = gameBoard.gameResource.energy.ToString() + " (" + gameBoard.gameResource.energyGeneration + " per tick)";
             }
             else
             {
@@ -536,7 +553,7 @@ namespace fireDefenderGame
         {
             if (gameBoard.board[prevX, prevY].building != null)
                 return;
-            energy -= Defender.BUILD_COST;
+            gameBoard.gameResource.energy -= Pipe.BUILD_COST;
             Building building = new Pipe(gameBoard.board[prevX, prevY], gameBoard.random);
             gameBoard.board[prevX, prevY].building = building;
             gameBoard.buildings.Add(building);
@@ -549,7 +566,7 @@ namespace fireDefenderGame
         {
             if (gameBoard.board[prevX, prevY].building != null)
                 return;
-            energy -= Defender.BUILD_COST;
+            gameBoard.gameResource.energy -= Pump.BUILD_COST;
             Building building = new Pump(gameBoard.board[prevX, prevY], gameBoard.random);
             gameBoard.board[prevX, prevY].building = building;
             gameBoard.buildings.Add(building);
@@ -562,7 +579,7 @@ namespace fireDefenderGame
         {
             if (gameBoard.board[prevX, prevY].unit != null)
                 return;
-            energy -= Defender.BUILD_COST;
+            gameBoard.gameResource.energy -= Defender.BUILD_COST;
             Unit unit = new Defender(gameBoard.board[prevX, prevY], gameBoard.random);
             gameBoard.board[prevX, prevY].unit = unit;
             gameBoard.units.Add(unit);
@@ -571,16 +588,32 @@ namespace fireDefenderGame
             updateTile(prevX, prevY);
         }
 
+        private void buttonBuildEnergyGenerator_Click(object sender, EventArgs e)
+        {
+            if (gameBoard.board[prevX, prevY].building != null)
+                return;
+            gameBoard.gameResource.energy -= EnergyGenerator.BUILD_COST;
+            Building building = new EnergyGenerator(gameBoard.board[prevX, prevY], gameBoard.random);
+            gameBoard.board[prevX, prevY].building = building;
+            gameBoard.buildings.Add(building);
+            panelBuildNew.Visible = false;
+            panelBuilding.Visible = true;
+            updateTile(prevX, prevY);
+        }
+
+
         private void buttonUnitUpgrade_Click(object sender, EventArgs e)
         {
-            energy -= gameBoard.board[prevX, prevY].unit.upgradeCost;
+            if (gameBoard.gameResource.energy > gameBoard.board[prevX, prevY].unit.upgradeCost)
+                gameBoard.gameResource.energy -= gameBoard.board[prevX, prevY].unit.upgradeCost;
             gameBoard.board[prevX, prevY].unit.upgrade();
             updateTile(prevX, prevY);
         }
 
         private void buttonBuildingUpgrade_Click(object sender, EventArgs e)
         {
-            energy -= gameBoard.board[prevX, prevY].building.upgradeCost;
+            if (gameBoard.gameResource.energy > gameBoard.board[prevX, prevY].building.upgradeCost)
+                gameBoard.gameResource.energy -= gameBoard.board[prevX, prevY].building.upgradeCost;
             gameBoard.board[prevX, prevY].building.upgrade();
             updateTile(prevX, prevY);
         }
